@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { CheckCircle2, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import heroVergaderkamer from "@/assets/hero-vergaderkamer.jpg";
 import galleryPresentatie from "@/assets/gallery-presentatie.jpg";
