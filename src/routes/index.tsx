@@ -701,7 +701,7 @@ function Aanvraag() {
 const inputCls =
   "mt-1.5 block w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-0";
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="mt-4 block first:mt-0">
       <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
