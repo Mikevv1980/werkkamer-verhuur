@@ -137,14 +137,17 @@ function Navbar() {
           <Link to="/" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
             Home
           </Link>
+          <Link to="/boeken" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
+            Boeken
+          </Link>
           <Link to="/contact" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
             Contact
           </Link>
           <Link
-            to="/contact"
+            to="/boeken"
             className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Aanmelden
+            Reserveer
           </Link>
         </div>
       </div>
