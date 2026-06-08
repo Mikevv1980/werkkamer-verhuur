@@ -11,7 +11,6 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import heroKamer from "../assets/hero-kamer.jpg";
 
 function NotFoundComponent() {
   return (
@@ -78,28 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Werkkamer te Huur — Productieve werkplek in hartje stad" },
-      { name: "description", content: "Huur een rustige, inspirerende werkkamer met natuurlijk licht, snel wifi en alle faciliteiten die je nodig hebt. Ideaal voor freelancers en ondernemers." },
-      { name: "author", content: "Werkkamer te Huur" },
-      { property: "og:title", content: "Werkkamer te Huur — Productieve werkplek" },
-      { property: "og:description", content: "Huur een rustige, inspirerende werkkamer met natuurlijk licht en alle faciliteiten." },
+      { title: "Werkkamer Bakkum — Lichte werkkamer voor overleg en workshop" },
+      {
+        name: "description",
+        content:
+          "Boek een lichte werkkamer in Bakkum voor overleg, brainstorm of workshop. Tot 4 personen, vanaf 20 euro per uur op landgoed Dijk en Duin.",
+      },
+      { name: "author", content: "Werkkamer Bakkum" },
+      { property: "og:title", content: "Werkkamer Bakkum — Lichte werkkamer voor overleg" },
+      {
+        property: "og:description",
+        content: "Een rustige, inspirerende werkkamer op landgoed Dijk en Duin.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap",
@@ -128,27 +124,30 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="font-serif text-xl font-semibold tracking-tight text-foreground">
-          Werkkamer te Huur
+        <Link to="/" className="flex items-center gap-2 font-serif text-base font-semibold tracking-tight text-foreground">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+            wb
+          </span>
+          Werkkamer Bakkum
         </Link>
-        <div className="flex items-center gap-6">
-          <Link to="/" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
-            Home
-          </Link>
-          <Link to="/boeken" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
-            Boeken
-          </Link>
-          <Link to="/contact" className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground">
-            Contact
-          </Link>
-          <Link
-            to="/boeken"
-            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        <div className="hidden items-center gap-8 sm:flex">
+          <a href="/#tarief" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+            Tarief
+          </a>
+          <a href="/#ruimte" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+            Ruimte
+          </a>
+          <a href="/#omgeving" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+            Omgeving
+          </a>
+          <a
+            href="/#aanvraag"
+            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
           >
-            Reserveer
-          </Link>
+            Aanvragen
+          </a>
         </div>
       </div>
     </nav>
@@ -157,21 +156,11 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Werkkamer te Huur. Alle rechten voorbehouden.
-          </p>
-          <div className="flex gap-4">
-            <Link to="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Home
-            </Link>
-            <Link to="/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              Contact
-            </Link>
-          </div>
-        </div>
+    <footer className="bg-forest-dark text-background/80">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-6 sm:flex-row sm:items-center">
+        <p className="font-serif text-base text-background">Werkkamer Bakkum</p>
+        <p className="text-xs">Dijk en Duin 11, Bakkum</p>
+        <p className="text-xs">Vrijwillig project &copy; {new Date().getFullYear()}</p>
       </div>
     </footer>
   );
