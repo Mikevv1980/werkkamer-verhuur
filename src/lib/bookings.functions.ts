@@ -18,6 +18,10 @@ const createSchema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
+  num_people: z.coerce.number().int().min(1).max(8).optional(),
+  room_purpose: z.string().trim().max(80).optional().or(z.literal("")),
+  start_time: z.string().trim().max(10).optional().or(z.literal("")),
+  end_time: z.string().trim().max(10).optional().or(z.literal("")),
   notes: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -34,7 +38,6 @@ export const getAvailability = createServerFn({ method: "GET" })
       .lte("booking_date", data.to)
       .neq("status", "cancelled");
     if (error) throw new Error(error.message);
-    // Map date -> Set of unavailable slots
     const map: Record<string, string[]> = {};
     for (const r of rows ?? []) {
       const list = (map[r.booking_date] ??= []);
@@ -42,7 +45,6 @@ export const getAvailability = createServerFn({ method: "GET" })
         list.push("ochtend", "middag", "hele_dag");
       } else {
         list.push(r.time_slot);
-        // if both ochtend & middag taken, hele_dag also unavailable
       }
     }
     for (const d of Object.keys(map)) {
@@ -58,7 +60,6 @@ export const createBooking = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    // Check conflicts (including hele_dag overlap)
     const { data: existing, error: checkErr } = await supabaseAdmin
       .from("bookings")
       .select("time_slot")
@@ -75,6 +76,17 @@ export const createBooking = createServerFn({ method: "POST" })
       throw new Error("Dit tijdslot is helaas net geboekt. Kies een ander moment.");
     }
 
+    const extraLines: string[] = [];
+    if (data.num_people) extraLines.push(`Aantal personen: ${data.num_people}`);
+    if (data.room_purpose) extraLines.push(`Soort werkruimte: ${data.room_purpose}`);
+    if (data.start_time || data.end_time) {
+      extraLines.push(
+        `Tijden: ${data.start_time || "—"} tot ${data.end_time || "—"}`,
+      );
+    }
+    if (data.notes) extraLines.push(`Extra wensen: ${data.notes}`);
+    const composedNotes = extraLines.length ? extraLines.join("\n") : null;
+
     const { data: inserted, error } = await supabaseAdmin
       .from("bookings")
       .insert({
@@ -83,7 +95,7 @@ export const createBooking = createServerFn({ method: "POST" })
         name: data.name,
         email: data.email,
         phone: data.phone || null,
-        notes: data.notes || null,
+        notes: composedNotes,
       })
       .select("id")
       .single();
