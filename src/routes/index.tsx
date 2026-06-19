@@ -13,32 +13,44 @@ import naturePath from "@/assets/uploads/7.jpg.asset.json";
 import landgoedPath from "@/assets/uploads/8.jpg.asset.json";
 import cupBuilding from "@/assets/uploads/9.jpg.asset.json";
 import sunnyAvenue from "@/assets/uploads/10.jpg.asset.json";
+// Kamer 2 foto's
+import k2Wide from "@/assets/room2/IMG_4542.jpg.asset.json";
+import k2Table from "@/assets/room2/IMG_4544.jpg.asset.json";
+import k2Frames from "@/assets/room2/IMG_4545.jpg.asset.json";
+import k2Window from "@/assets/room2/IMG_4546.jpg.asset.json";
+import k2Door from "@/assets/room2/IMG_4547.jpg.asset.json";
+import k2Coffee from "@/assets/room2/IMG_4549.jpg.asset.json";
+import k2View from "@/assets/room2/IMG_4556.jpg.asset.json";
+import k2Chair from "@/assets/room2/IMG_4560.jpg.asset.json";
+import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
 import {
   createBooking,
   getAvailability,
   TIME_SLOTS,
+  ROOMS,
   type TimeSlot,
+  type Room,
 } from "@/lib/bookings.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Werkkamer Bakkum — Lichte werkkamer voor overleg, brainstorm en workshop",
+        title: "Werkkamer Bakkum — Twee lichte werkkamers voor overleg, brainstorm en workshop",
       },
       {
         name: "description",
         content:
-          "Boek een rustige lichte werkkamer op landgoed Dijk en Duin in Bakkum. Tot 4 personen, vanaf 20 euro per uur. Ideaal voor overleg, brainstorm en workshop.",
+          "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Kies uit Kamer 1 (vanaf 20 euro p/u) of Kamer 2 (vanaf 15 euro p/u). Ideaal voor overleg, brainstorm en workshop.",
       },
       {
         property: "og:title",
-        content: "Werkkamer Bakkum — Lichte werkkamer voor overleg",
+        content: "Werkkamer Bakkum — Twee lichte werkkamers voor overleg",
       },
       {
         property: "og:description",
         content:
-          "Een lichte werkkamer op landgoed Dijk en Duin in Bakkum. Boek per uur of voor een hele dag.",
+          "Twee sfeervolle werkkamers op landgoed Dijk en Duin in Bakkum. Boek per uur of voor een hele dag.",
       },
     ],
   }),
@@ -59,9 +71,9 @@ function endOfMonth(d: Date) {
 }
 
 const stats = [
-  { value: "4 personen", label: "ronde tafel voor overleg en sessies" },
+  { value: "2 kamers", label: "kies de kamer die bij je sessie past" },
   { value: "7 dagen", label: "in de week beschikbaar in overleg" },
-  { value: "20 euro / uur", label: "of 120 euro voor een hele dag" },
+  { value: "vanaf €15 / uur", label: "of vanaf 75 euro voor een hele dag" },
   { value: "Dijk en Duin", label: "rustige plek in Bakkum" },
 ];
 
@@ -80,37 +92,44 @@ const featurePoints = [
   },
 ];
 
+const kamers = [
+  {
+    value: "kamer1" as const,
+    name: "Kamer 1",
+    tagline: "Ruime werkkamer met groot scherm",
+    description:
+      "Onze grootste werkkamer. Ronde tafel voor maximaal vier personen, een groot tv-scherm met Apple-TV en veel daglicht. Ideaal voor presentaties, workshops en langere sessies.",
+    hourly: 20,
+    daily: 120,
+    image: roomHero.url,
+    features: ["Max. 4 personen", "Groot scherm met Apple-TV", "Eigen koffiehoek"],
+  },
+  {
+    value: "kamer2" as const,
+    name: "Kamer 2",
+    tagline: "Compacte sfeervolle kamer met uitzicht",
+    description:
+      "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, comfortabele stoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg met 2 tot 3 personen.",
+    hourly: 15,
+    daily: 75,
+    image: k2Wide.url,
+    features: ["2–3 personen", "Veel daglicht en groen uitzicht", "Rustige, warme sfeer"],
+  },
+];
+
 const gallery = [
-  {
-    src: coffeeMachine.url,
-    alt: "Nespresso-apparaat dat koffie zet in een kopje op de werkkamer",
-    caption: "Koffie en rust bij binnenkomst.",
-  },
-  {
-    src: valuesCards.url,
-    alt: "Kaarten op tafel tijdens een coach- of werksessie in de werkkamer",
-    caption: "Geschikt voor coaching, sessies en reflectie.",
-  },
-  {
-    src: kitchenette.url,
-    alt: "Warme kitchenette in de werkkamer met koffiehoek en scherm",
-    caption: "Eigen koffiehoek en scherm voor presentaties.",
-  },
-  {
-    src: windowPlants.url,
-    alt: "Planten op de vensterbank met uitzicht op het landgoed",
-    caption: "Veel daglicht en een groen uitzicht.",
-  },
-  {
-    src: cozyTable.url,
-    alt: "Ronde tafel met zachte stoelen, laptop en kopje koffie in de werkkamer",
-    caption: "Een warme setting voor overleg en focus.",
-  },
-  {
-    src: cupBuilding.url,
-    alt: "Kopje op tafel met op de achtergrond het historische gebouw van Dijk en Duin",
-    caption: "Binnen en buiten voelt de plek rustig aan.",
-  },
+  { src: coffeeMachine.url, alt: "Nespresso-apparaat in de werkkamer", caption: "Koffie en rust bij binnenkomst.", room: "Kamer 1" },
+  { src: valuesCards.url, alt: "Kaarten op tafel tijdens een sessie", caption: "Geschikt voor coaching en reflectie.", room: "Kamer 1" },
+  { src: kitchenette.url, alt: "Kitchenette met scherm", caption: "Eigen koffiehoek en scherm.", room: "Kamer 1" },
+  { src: windowPlants.url, alt: "Planten op de vensterbank", caption: "Daglicht en groen uitzicht.", room: "Kamer 1" },
+  { src: cozyTable.url, alt: "Ronde tafel met stoelen", caption: "Warme setting voor overleg.", room: "Kamer 1" },
+  { src: cupBuilding.url, alt: "Kopje met uitzicht op landgoed", caption: "Rustige plek op Dijk en Duin.", room: "Kamer 1" },
+  { src: k2Table.url, alt: "Ovalen houten tafel in Kamer 2", caption: "Knusse ovalen tafel voor gesprekken.", room: "Kamer 2" },
+  { src: k2Window.url, alt: "Uitzicht door het raam in Kamer 2", caption: "Veel daglicht en groen uitzicht.", room: "Kamer 2" },
+  { src: k2Chair.url, alt: "Stoel en tafel bij het raam in Kamer 2", caption: "Comfortabele stoelen en rust.", room: "Kamer 2" },
+  { src: k2Frames.url, alt: "Wandplank met lijstjes in Kamer 2", caption: "Persoonlijk en sfeervol ingericht.", room: "Kamer 2" },
+  { src: k2View.url, alt: "Uitzicht op het historische gebouw vanuit Kamer 2", caption: "Uitzicht op het historische landgoed.", room: "Kamer 2" },
+  { src: k2Coffee.url, alt: "Koffiemachine met klok ‘Enjoy the day’", caption: "Koffie, thee en een fijn moment.", room: "Kamer 2" },
 ];
 
 function Index() {
@@ -119,6 +138,7 @@ function Index() {
       <Hero />
       <Stats />
       <Ruimte />
+      <Kamers />
       <Gallery />
       <Omgeving />
       <Tarief />
@@ -146,12 +166,12 @@ function Hero() {
                 Een productieve dag in Bakkum
               </p>
               <h1 className="mt-4 font-serif text-4xl leading-[1.02] sm:text-5xl lg:text-6xl">
-                Een lichte werkkamer voor overleg, brainstorm en workshop.
+                Twee lichte werkkamers voor overleg, brainstorm en workshop.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
-                Rustige, warme werkruimte voor maximaal vier personen, midden op landgoed
-                Dijk en Duin. Inclusief groot scherm met Apple-TV, koffie en een kop soep
-                tussendoor.
+                Kies de kamer die past bij je sessie — een ruime werkkamer met scherm, of een
+                knusse kamer met uitzicht op het landgoed. Inclusief koffie en een wandeling
+                door de duinen.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
@@ -161,10 +181,10 @@ function Hero() {
                   Vraag beschikbaarheid aan
                 </a>
                 <a
-                  href="#ruimte"
+                  href="#kamers"
                   className="inline-flex items-center justify-center rounded-full border border-white/40 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
                 >
-                  Bekijk de ruimte
+                  Bekijk beide kamers
                 </a>
               </div>
             </div>
@@ -202,9 +222,8 @@ function Ruimte() {
             Compact genoeg voor focus, ruim genoeg voor goede gesprekken.
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            De werkkamer is ingericht voor max. vier personen rond een ronde tafel. Geen
-            kantoorgevoel, geen harde sfeer — wel daglicht, planten, warme materialen en een
-            hoek voor een korte pauze. Voor wie even uit het kantoor wil zonder thuis te
+            Geen kantoorgevoel, geen harde sfeer — wel daglicht, planten, warme materialen en
+            een hoek voor een korte pauze. Voor wie even uit het kantoor wil zonder thuis te
             werken.
           </p>
         </div>
@@ -231,35 +250,105 @@ function Ruimte() {
   );
 }
 
+function Kamers() {
+  return (
+    <section id="kamers" className="bg-accent/40 py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+            Twee kamers
+          </p>
+          <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+            Kies de kamer die past bij je sessie.
+          </h2>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            Beide kamers zijn warm en persoonlijk ingericht en kijken uit op het groen van
+            landgoed Dijk en Duin.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          {kamers.map((k) => (
+            <article
+              key={k.value}
+              className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm"
+            >
+              <img
+                src={k.image}
+                alt={`Overzichtsfoto van ${k.name}`}
+                width={1200}
+                height={800}
+                className="h-72 w-full object-cover"
+                loading="lazy"
+              />
+              <div className="p-6 sm:p-8">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-serif text-2xl text-card-foreground">{k.name}</h3>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-terracotta">
+                    €{k.hourly} p/u · €{k.daily} dag
+                  </p>
+                </div>
+                <p className="mt-1 text-sm font-medium text-primary">{k.tagline}</p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {k.description}
+                </p>
+                <ul className="mt-5 space-y-2">
+                  {k.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-foreground">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#aanvraag"
+                  className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  Boek {k.name}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Gallery() {
   return (
-    <section className="pb-20 sm:pb-24">
+    <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-              Sfeer van de werkkamer
+              Sfeer van beide kamers
             </p>
             <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
               Warm, rustig en persoonlijk ingericht.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            De aangeleverde foto’s laten precies zien wat de plek bijzonder maakt: zachte
-            materialen, koffie, groen en het historische karakter van Dijk en Duin.
+            Een doorkijk in Kamer 1 en Kamer 2: zachte materialen, koffie, groen en het
+            historische karakter van Dijk en Duin.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {gallery.map((g) => (
-            <figure key={g.caption} className="overflow-hidden rounded-2xl border border-border/70 bg-card/60">
-              <img
-                src={g.src}
-                alt={g.alt}
-                loading="lazy"
-                width={900}
-                height={700}
-                className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
+            <figure key={g.src} className="overflow-hidden rounded-2xl border border-border/70 bg-card/60">
+              <div className="relative">
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  width={900}
+                  height={700}
+                  className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-background/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur-sm">
+                  {g.room}
+                </span>
+              </div>
               <figcaption className="px-4 py-3 text-sm text-foreground">{g.caption}</figcaption>
             </figure>
           ))}
@@ -327,42 +416,44 @@ function Omgeving() {
 function Tarief() {
   return (
     <section id="tarief" className="py-20 sm:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
-        <div>
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="max-w-2xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
             Transparante tarieven
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
             Reserveer per uur of kies direct voor een hele dag.
           </h2>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
             Geen vaste abonnementen, geen lange contracten. Boek zoals het past, en alles is
             inbegrepen — schoonmaak, koffie, water en het uitzicht.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Per uur
-            </p>
-            <p className="mt-4 font-serif text-4xl text-card-foreground">
-              20 <span className="text-2xl">euro</span>
-            </p>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-              Min. 2 uur dagdeel. Bedoeld voor korte sessies.
-            </p>
-          </div>
-          <div className="rounded-2xl bg-forest-dark p-7 text-background shadow-lg">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-background/70">
-              Hele dag
-            </p>
-            <p className="mt-4 font-serif text-4xl">
-              120 <span className="text-2xl">euro</span>
-            </p>
-            <p className="mt-3 text-xs leading-relaxed text-background/80">
-              Voor workshops, brainstorm of trainingsdag.
-            </p>
-          </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {kamers.flatMap((k) => [
+            <div key={`${k.value}-uur`} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                {k.name} · per uur
+              </p>
+              <p className="mt-3 font-serif text-4xl text-card-foreground">
+                {k.hourly} <span className="text-2xl">euro</span>
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                Min. 2 uur. Bedoeld voor korte sessies.
+              </p>
+            </div>,
+            <div key={`${k.value}-dag`} className="rounded-2xl bg-forest-dark p-6 text-background shadow-lg">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-background/70">
+                {k.name} · hele dag
+              </p>
+              <p className="mt-3 font-serif text-4xl">
+                {k.daily} <span className="text-2xl">euro</span>
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-background/80">
+                Voor workshops, brainstorm of trainingsdag.
+              </p>
+            </div>,
+          ])}
         </div>
       </div>
     </section>
@@ -378,6 +469,7 @@ function Aanvraag() {
     return t;
   }, []);
   const [monthCursor, setMonthCursor] = useState(startOfMonth(today));
+  const [selectedRoom, setSelectedRoom] = useState<Room>("kamer1");
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
   const [form, setForm] = useState({
@@ -410,6 +502,7 @@ function Aanvraag() {
         data: {
           booking_date: selectedDate!,
           time_slot: selectedSlot!,
+          room: selectedRoom,
           name: form.name,
           email: form.email,
           phone: form.phone,
@@ -443,8 +536,16 @@ function Aanvraag() {
     return cells;
   }, [monthCursor]);
 
-  const unavailable = availability?.unavailable ?? {};
-  const selectedUnavailable = selectedDate ? (unavailable[selectedDate] ?? []) : [];
+  const roomUnavailable = availability?.unavailable?.[selectedRoom] ?? {};
+  const selectedUnavailable = selectedDate ? (roomUnavailable[selectedDate] ?? []) : [];
+
+  const currentRoom = ROOMS.find((r) => r.value === selectedRoom)!;
+  const indicatie =
+    selectedSlot === "hele_dag"
+      ? `€${currentRoom.daily}`
+      : selectedSlot
+        ? `€${currentRoom.hourly * 4} per dagdeel`
+        : "—";
 
   return (
     <section id="aanvraag" className="py-20 sm:py-24">
@@ -457,23 +558,22 @@ function Aanvraag() {
             Vraag eenvoudig beschikbaarheid aan.
           </h2>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-            Vul je gegevens in en je krijgt zo snel mogelijk een reactie via e-mail of
-            telefoon. We bevestigen datum, tijd en eventuele wensen.
+            Kies de kamer, datum en tijd. Je krijgt zo snel mogelijk een reactie via e-mail of
+            telefoon ter bevestiging.
           </p>
           <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card/60">
             <img
-              src={cupBuilding.url}
-              alt="Kopje op de tafel in de werkkamer met uitzicht op het historische gebouw"
+              src={selectedRoom === "kamer1" ? cupBuilding.url : k2View.url}
+              alt={`Sfeerbeeld van ${currentRoom.label}`}
               loading="lazy"
               width={900}
               height={640}
               className="h-56 w-full object-cover"
             />
             <div className="p-5 text-sm leading-relaxed text-foreground">
-              <p className="font-semibold">Gunstige actie</p>
+              <p className="font-semibold">{currentRoom.label}</p>
               <p className="mt-1 text-muted-foreground">
-                Met max. vier personen, een hele dag, lunch en een wandeling bij Dijk en Duin
-                vanaf 200 euro / dag.
+                €{currentRoom.hourly} per uur · €{currentRoom.daily} hele dag.
               </p>
             </div>
           </div>
@@ -509,6 +609,37 @@ function Aanvraag() {
               mutation.mutate();
             }}
           >
+            <div>
+              <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Kies een kamer
+              </span>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {ROOMS.map((r) => {
+                  const active = r.value === selectedRoom;
+                  return (
+                    <button
+                      type="button"
+                      key={r.value}
+                      onClick={() => {
+                        setSelectedRoom(r.value);
+                        setSelectedSlot(null);
+                      }}
+                      className={`rounded-xl border p-3 text-left transition-all ${
+                        active
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:border-primary/40"
+                      }`}
+                    >
+                      <p className="font-serif text-sm text-foreground">{r.label}</p>
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        €{r.hourly} p/u · €{r.daily} dag
+                      </p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <Field label="Naam">
               <input
                 required
@@ -576,7 +707,7 @@ function Aanvraag() {
                   if (!d) return <div key={i} />;
                   const key = fmtDate(d);
                   const isPast = d < today;
-                  const unavailableSlots = unavailable[key] ?? [];
+                  const unavailableSlots = roomUnavailable[key] ?? [];
                   const fullyBooked = unavailableSlots.includes("hele_dag");
                   const disabled = isPast || fullyBooked;
                   const isSelected = selectedDate === key;
@@ -707,9 +838,7 @@ function Aanvraag() {
             </Field>
 
             <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
-              <span>
-                Indicatie: {selectedSlot === "hele_dag" ? "€120" : selectedSlot ? "€80 per dagdeel" : "—"}
-              </span>
+              <span>Indicatie: {indicatie}</span>
               {!selectedDate || !selectedSlot ? (
                 <span>Vul datum en tijden in</span>
               ) : (
