@@ -136,8 +136,8 @@ function Navbar() {
           <a href="/#tarief" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
             Tarief
           </a>
-          <a href="/#ruimte" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
-            Ruimte
+          <a href="/#kamers" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+            Kamers
           </a>
           <a href="/#omgeving" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
             Omgeving
