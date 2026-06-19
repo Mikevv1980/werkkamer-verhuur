@@ -122,18 +122,12 @@ const kamers = [
 ];
 
 const gallery = [
-  { src: coffeeMachine.url, alt: "Nespresso-apparaat in de werkkamer", caption: "Koffie en rust bij binnenkomst.", room: "Kamer 1" },
-  { src: valuesCards.url, alt: "Kaarten op tafel tijdens een sessie", caption: "Geschikt voor coaching en reflectie.", room: "Kamer 1" },
-  { src: kitchenette.url, alt: "Kitchenette met scherm", caption: "Eigen koffiehoek en scherm.", room: "Kamer 1" },
-  { src: windowPlants.url, alt: "Planten op de vensterbank", caption: "Daglicht en groen uitzicht.", room: "Kamer 1" },
-  { src: cozyTable.url, alt: "Ronde tafel met stoelen", caption: "Warme setting voor overleg.", room: "Kamer 1" },
-  { src: cupBuilding.url, alt: "Kopje met uitzicht op landgoed", caption: "Rustige plek op Dijk en Duin.", room: "Kamer 1" },
-  { src: k2Table.url, alt: "Ovalen houten tafel in Kamer 2", caption: "Knusse ovalen tafel voor gesprekken.", room: "Kamer 2" },
-  { src: k2Window.url, alt: "Uitzicht door het raam in Kamer 2", caption: "Veel daglicht en groen uitzicht.", room: "Kamer 2" },
-  { src: k2Chair.url, alt: "Stoel en tafel bij het raam in Kamer 2", caption: "Comfortabele stoelen en rust.", room: "Kamer 2" },
-  { src: k2Frames.url, alt: "Wandplank met lijstjes in Kamer 2", caption: "Persoonlijk en sfeervol ingericht.", room: "Kamer 2" },
-  { src: k2View.url, alt: "Uitzicht op het historische gebouw vanuit Kamer 2", caption: "Uitzicht op het historische landgoed.", room: "Kamer 2" },
-  { src: k2Coffee.url, alt: "Koffiemachine met klok ‘Enjoy the day’", caption: "Koffie, thee en een fijn moment.", room: "Kamer 2" },
+  { src: sfeerOverview.url, alt: "Warme werkkamer met ovalen tafel en daglicht", caption: "Veel daglicht en een warme, rustige sfeer.", room: "Kamer 1" },
+  { src: sfeerKitchen.url, alt: "Kitchenette met planten en koffie", caption: "Eigen koffiehoek met verse koffie en thee.", room: "Kamer 1" },
+  { src: sfeerNotes.url, alt: "Aantekeningen maken in een notitieboek", caption: "Ruimte om te denken, schrijven en reflecteren.", room: "Kamer 1" },
+  { src: k2Table.url, alt: "Ovalen houten tafel in Kamer 2", caption: "Knusse ovalen tafel voor gesprekken in Kamer 2.", room: "Kamer 2" },
+  { src: k2View.url, alt: "Uitzicht op het historische gebouw vanuit Kamer 2", caption: "Uitzicht op het historische landgoed Dijk en Duin.", room: "Kamer 2" },
+  { src: sfeerCup.url, alt: "Porseleinen kopje op tafel met daglicht", caption: "Tijd voor een kop koffie tussen de sessies door.", room: "Kamer 1" },
 ];
 
 function Index() {
