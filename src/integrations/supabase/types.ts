@@ -23,6 +23,7 @@ export type Database = {
           name: string
           notes: string | null
           phone: string | null
+          room: string
           status: string
           time_slot: string
           updated_at: string
@@ -35,6 +36,7 @@ export type Database = {
           name: string
           notes?: string | null
           phone?: string | null
+          room?: string
           status?: string
           time_slot: string
           updated_at?: string
@@ -47,6 +49,7 @@ export type Database = {
           name?: string
           notes?: string | null
           phone?: string | null
+          room?: string
           status?: string
           time_slot?: string
           updated_at?: string
