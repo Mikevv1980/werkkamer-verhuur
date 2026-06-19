@@ -379,8 +379,8 @@ function Omgeving() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <img
-              src={naturePath.url}
-              alt="Natuurpad en bomen rondom de werkkamer in Bakkum"
+              src={omgevingGebouw.url}
+              alt="Historisch hoofdgebouw met klokkentoren op landgoed Dijk en Duin"
               loading="lazy"
               width={800}
               height={900}
@@ -388,16 +388,16 @@ function Omgeving() {
             />
             <div className="grid gap-4">
               <img
-                src={landgoedPath.url}
-                alt="Pad langs het historische gebouw op landgoed Dijk en Duin"
+                src={omgevingPad.url}
+                alt="Wandelpad langs een karakteristiek huisje op het landgoed"
                 loading="lazy"
                 width={800}
                 height={500}
                 className="h-52 w-full rounded-2xl object-cover"
               />
               <img
-                src={sunnyAvenue.url}
-                alt="Zonnige laan en historisch gebouw in de buurt van de werkkamer"
+                src={omgevingLaan.url}
+                alt="Zonnige bomenlaan richting de duinen bij Bakkum"
                 loading="lazy"
                 width={800}
                 height={500}
