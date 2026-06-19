@@ -23,6 +23,10 @@ import k2Coffee from "@/assets/room2/IMG_4549.jpg.asset.json";
 import k2View from "@/assets/room2/IMG_4556.jpg.asset.json";
 import k2Chair from "@/assets/room2/IMG_4560.jpg.asset.json";
 import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
+import sfeerOverview from "@/assets/sfeer/mk17.jpg.asset.json";
+import sfeerKitchen from "@/assets/sfeer/mk18.jpg.asset.json";
+import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
+import sfeerCup from "@/assets/sfeer/11.png.asset.json";
 import {
   createBooking,
   getAvailability,
