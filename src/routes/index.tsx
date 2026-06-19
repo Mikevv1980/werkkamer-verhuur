@@ -15,18 +15,18 @@ import cupBuilding from "@/assets/uploads/9.jpg.asset.json";
 import sunnyAvenue from "@/assets/uploads/10.jpg.asset.json";
 // Kamer 2 foto's
 import k2Wide from "@/assets/room2/IMG_4542.jpg.asset.json";
-import k2Table from "@/assets/room2/IMG_4544.jpg.asset.json";
+
 import k2Frames from "@/assets/room2/IMG_4545.jpg.asset.json";
 import k2Window from "@/assets/room2/IMG_4546.jpg.asset.json";
 import k2Door from "@/assets/room2/IMG_4547.jpg.asset.json";
 import k2Coffee from "@/assets/room2/IMG_4549.jpg.asset.json";
-import k2View from "@/assets/room2/IMG_4556.jpg.asset.json";
+
 import k2Chair from "@/assets/room2/IMG_4560.jpg.asset.json";
 import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
 import sfeerOverview from "@/assets/sfeer/mk17.jpg.asset.json";
 import sfeerKitchen from "@/assets/sfeer/mk18.jpg.asset.json";
 import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
-import sfeerCup from "@/assets/sfeer/11.png.asset.json";
+
 import {
   createBooking,
   getAvailability,
@@ -125,9 +125,6 @@ const gallery = [
   { src: sfeerOverview.url, alt: "Warme werkkamer met ovalen tafel en daglicht", caption: "Veel daglicht en een warme, rustige sfeer.", room: "Kamer 1" },
   { src: sfeerKitchen.url, alt: "Kitchenette met planten en koffie", caption: "Eigen koffiehoek met verse koffie en thee.", room: "Kamer 1" },
   { src: sfeerNotes.url, alt: "Aantekeningen maken in een notitieboek", caption: "Ruimte om te denken, schrijven en reflecteren.", room: "Kamer 1" },
-  { src: k2Table.url, alt: "Ovalen houten tafel in Kamer 2", caption: "Knusse ovalen tafel voor gesprekken in Kamer 2.", room: "Kamer 2" },
-  { src: k2View.url, alt: "Uitzicht op het historische gebouw vanuit Kamer 2", caption: "Uitzicht op het historische landgoed Dijk en Duin.", room: "Kamer 2" },
-  { src: sfeerCup.url, alt: "Porseleinen kopje op tafel met daglicht", caption: "Tijd voor een kop koffie tussen de sessies door.", room: "Kamer 1" },
 ];
 
 function Index() {
