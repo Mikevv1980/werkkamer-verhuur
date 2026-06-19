@@ -1,12 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { MapPin, Mail, Phone, Clock, Send, CheckCircle } from "lucide-react";
+import meetingRoom from "@/assets/uploads/3.jpg.asset.json";
+import plantsView from "@/assets/uploads/4.jpg.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Werkkamer te Huur" },
-      { name: "description", content: "Neem contact op om een bezichtiging in te plannen of meer informatie te vragen over de werkkamer." },
+      { title: "Contact — Werkkamer Bakkum" },
+      {
+        name: "description",
+        content:
+          "Neem contact op om beschikbaarheid op te vragen of meer informatie te krijgen over de werkkamer in Bakkum.",
+      },
     ],
   }),
   component: ContactPage,
@@ -36,8 +42,7 @@ function ContactPage() {
             Bedankt voor je aanvraag!
           </h1>
           <p className="mt-4 text-muted-foreground">
-            Ik neem zo snel mogelijk contact met je op om een bezichtiging in te plannen.
-            Je hoort binnen 24 uur van me.
+            Ik neem zo snel mogelijk contact met je op om de mogelijkheden te bespreken.
           </p>
           <a
             href="/"
@@ -51,20 +56,40 @@ function ContactPage() {
   }
 
   return (
-    <main className="py-16">
+    <main className="py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="overflow-hidden rounded-3xl">
+            <img
+              src={meetingRoom.url}
+              alt="Warme koffiehoek en vergadertafel in de werkkamer"
+              width={1400}
+              height={900}
+              className="h-72 w-full object-cover sm:h-80"
+            />
+          </div>
+          <div className="overflow-hidden rounded-3xl">
+            <img
+              src={plantsView.url}
+              alt="Planten in de vensterbank met uitzicht op het groene landgoed"
+              width={900}
+              height={900}
+              className="h-72 w-full object-cover sm:h-80"
+            />
+          </div>
+        </div>
+
         <div className="grid gap-16 lg:grid-cols-2">
-          {/* Contact info */}
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-terracotta">
               Neem contact op
             </span>
             <h1 className="mt-3 font-serif text-3xl font-medium text-foreground sm:text-4xl">
-              Plan je bezichtiging
+              Vraag beschikbaarheid aan
             </h1>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Vul het formulier in en ik neem binnen 24 uur contact met je op.
-              Een bezichtiging is geheel vrijblijvend.
+              Vul het formulier in en je krijgt zo snel mogelijk een reactie. We denken graag
+              mee over dagdeel, workshop, overleg of coachsessie.
             </p>
 
             <div className="mt-10 space-y-6">
@@ -74,12 +99,7 @@ function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Locatie</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Hoofdstraat 42, 1234 AB Amsterdam
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    5 minuten lopen van Centraal Station
-                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">Landgoed Dijk en Duin, Bakkum</p>
                 </div>
               </div>
 
@@ -89,9 +109,7 @@ function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">E-mail</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    info@werkkamer-te-huur.nl
-                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">info@werkkamerbakkum.nl</p>
                 </div>
               </div>
 
@@ -101,9 +119,7 @@ function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Telefoon</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    +31 6 12 34 56 78
-                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">+31 6 12 34 56 78</p>
                 </div>
               </div>
 
@@ -113,15 +129,12 @@ function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-foreground">Beschikbaarheid</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Maandag t/m vrijdag, 08:00 - 18:00
-                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">Op aanvraag, per tijdslot of hele dag</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Form */}
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -171,7 +184,7 @@ function ContactPage() {
 
               <div>
                 <label htmlFor="interest" className="block text-sm font-medium text-card-foreground">
-                  Ik ben geinteresseerd in
+                  Type aanvraag
                 </label>
                 <select
                   id="interest"
@@ -179,10 +192,10 @@ function ContactPage() {
                   onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                   className="mt-1.5 block w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground shadow-sm transition-colors focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta"
                 >
-                  <option value="dagpass">Dagpass</option>
-                  <option value="weekpas">Weekpas</option>
-                  <option value="maandpas">Maandpas</option>
-                  <option value="onbekend">Weet ik nog niet</option>
+                  <option value="dagpass">Dagdeel</option>
+                  <option value="weekpas">Hele dag</option>
+                  <option value="maandpas">Workshop of sessie</option>
+                  <option value="onbekend">Ik wil overleggen</option>
                 </select>
               </div>
 
@@ -196,7 +209,7 @@ function ContactPage() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="mt-1.5 block w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground shadow-sm transition-colors focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta"
-                  placeholder="Vertel iets over jezelf of wanneer je beschikbaar bent voor een bezichtiging..."
+                  placeholder="Vertel iets over je gewenste datum of type sessie..."
                 />
               </div>
 

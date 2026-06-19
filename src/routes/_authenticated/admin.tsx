@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { LogOut, Mail, Phone, MessageSquare } from "lucide-react";
 import { listBookings, updateBookingStatus, TIME_SLOTS } from "@/lib/bookings.functions";
 import { supabase } from "@/integrations/supabase/client";
+import roomBanner from "@/assets/uploads/9.jpg.asset.json";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ meta: [{ title: "Admin — Boekingen" }] }),
@@ -47,27 +48,37 @@ function AdminPage() {
   const bookings = data?.bookings ?? [];
 
   return (
-    <main className="py-16">
+    <main className="py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-terracotta">
-              Beheer
-            </span>
-            <h1 className="mt-2 font-serif text-3xl font-medium text-foreground sm:text-4xl">
-              Boekingen
-            </h1>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Overzicht van alle reserveringen. Bevestig of annuleer per boeking.
-            </p>
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card">
+          <img
+            src={roomBanner.url}
+            alt="Kopje op tafel in de werkkamer met uitzicht op het landgoed"
+            width={1600}
+            height={520}
+            className="h-52 w-full object-cover sm:h-64"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
+          <div className="absolute inset-0 flex items-end justify-between gap-4 p-6 sm:p-8">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-white/80">
+                Beheer
+              </span>
+              <h1 className="mt-2 font-serif text-3xl font-medium text-white sm:text-4xl">
+                Boekingen
+              </h1>
+              <p className="mt-2 text-sm text-white/80">
+                Overzicht van alle reserveringen in een rustige beheeromgeving.
+              </p>
+            </div>
+            <button
+              onClick={signOut}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm hover:bg-white/20"
+            >
+              <LogOut className="h-4 w-4" />
+              Uitloggen
+            </button>
           </div>
-          <button
-            onClick={signOut}
-            className="inline-flex items-center gap-2 rounded-lg border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent"
-          >
-            <LogOut className="h-4 w-4" />
-            Uitloggen
-          </button>
         </div>
 
         <div className="mt-10 space-y-3">
@@ -78,8 +89,7 @@ function AdminPage() {
             </div>
           )}
           {bookings.map((b) => {
-            const slotLabel =
-              TIME_SLOTS.find((s) => s.value === b.time_slot)?.label ?? b.time_slot;
+            const slotLabel = TIME_SLOTS.find((s) => s.value === b.time_slot)?.label ?? b.time_slot;
             return (
               <div
                 key={b.id}
@@ -130,9 +140,7 @@ function AdminPage() {
                   <div className="flex flex-wrap gap-2">
                     {b.status !== "confirmed" && (
                       <button
-                        onClick={() =>
-                          mutation.mutate({ id: b.id, status: "confirmed" })
-                        }
+                        onClick={() => mutation.mutate({ id: b.id, status: "confirmed" })}
                         disabled={mutation.isPending}
                         className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
                       >
@@ -141,9 +149,7 @@ function AdminPage() {
                     )}
                     {b.status !== "cancelled" && (
                       <button
-                        onClick={() =>
-                          mutation.mutate({ id: b.id, status: "cancelled" })
-                        }
+                        onClick={() => mutation.mutate({ id: b.id, status: "cancelled" })}
                         disabled={mutation.isPending}
                         className="rounded-lg border border-input bg-background px-3 py-1.5 text-xs font-semibold hover:bg-accent"
                       >
