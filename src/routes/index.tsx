@@ -26,6 +26,9 @@ import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
 import sfeerOverview from "@/assets/sfeer/mk17.jpg.asset.json";
 import sfeerKitchen from "@/assets/sfeer/mk18.jpg.asset.json";
 import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
+import omgevingGebouw from "@/assets/omgeving/gebouw.png.asset.json";
+import omgevingPad from "@/assets/omgeving/pad.png.asset.json";
+import omgevingLaan from "@/assets/omgeving/laan.png.asset.json";
 
 import {
   createBooking,
@@ -376,8 +379,8 @@ function Omgeving() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <img
-              src={naturePath.url}
-              alt="Natuurpad en bomen rondom de werkkamer in Bakkum"
+              src={omgevingGebouw.url}
+              alt="Historisch hoofdgebouw met klokkentoren op landgoed Dijk en Duin"
               loading="lazy"
               width={800}
               height={900}
@@ -385,16 +388,16 @@ function Omgeving() {
             />
             <div className="grid gap-4">
               <img
-                src={landgoedPath.url}
-                alt="Pad langs het historische gebouw op landgoed Dijk en Duin"
+                src={omgevingPad.url}
+                alt="Wandelpad langs een karakteristiek huisje op het landgoed"
                 loading="lazy"
                 width={800}
                 height={500}
                 className="h-52 w-full rounded-2xl object-cover"
               />
               <img
-                src={sunnyAvenue.url}
-                alt="Zonnige laan en historisch gebouw in de buurt van de werkkamer"
+                src={omgevingLaan.url}
+                alt="Zonnige bomenlaan richting de duinen bij Bakkum"
                 loading="lazy"
                 width={800}
                 height={500}
