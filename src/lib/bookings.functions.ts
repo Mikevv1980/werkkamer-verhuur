@@ -10,11 +10,31 @@ export const TIME_SLOTS = [
 
 export type TimeSlot = (typeof TIME_SLOTS)[number]["value"];
 
+export const ROOMS = [
+  {
+    value: "kamer1",
+    label: "Kamer 1",
+    tagline: "Ruime werkkamer met groot scherm",
+    hourly: 20,
+    daily: 120,
+  },
+  {
+    value: "kamer2",
+    label: "Kamer 2",
+    tagline: "Compacte sfeervolle kamer met uitzicht",
+    hourly: 15,
+    daily: 75,
+  },
+] as const;
+
+export type Room = (typeof ROOMS)[number]["value"];
+
 const dateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Ongeldige datum");
 
 const createSchema = z.object({
   booking_date: dateSchema,
   time_slot: z.enum(["ochtend", "middag", "hele_dag"]),
+  room: z.enum(["kamer1", "kamer2"]).default("kamer1"),
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(255),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
@@ -25,6 +45,8 @@ const createSchema = z.object({
   notes: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
+type AvailabilityMap = Record<string, string[]>;
+
 export const getAvailability = createServerFn({ method: "GET" })
   .inputValidator((data: { from: string; to: string }) =>
     z.object({ from: dateSchema, to: dateSchema }).parse(data),
@@ -33,13 +55,16 @@ export const getAvailability = createServerFn({ method: "GET" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: rows, error } = await supabaseAdmin
       .from("bookings")
-      .select("booking_date, time_slot, status")
+      .select("booking_date, time_slot, status, room")
       .gte("booking_date", data.from)
       .lte("booking_date", data.to)
       .neq("status", "cancelled");
     if (error) throw new Error(error.message);
-    const map: Record<string, string[]> = {};
+
+    const perRoom: Record<string, AvailabilityMap> = { kamer1: {}, kamer2: {} };
     for (const r of rows ?? []) {
+      const room = (r as { room?: string }).room ?? "kamer1";
+      const map = (perRoom[room] ??= {});
       const list = (map[r.booking_date] ??= []);
       if (r.time_slot === "hele_dag") {
         list.push("ochtend", "middag", "hele_dag");
@@ -47,12 +72,14 @@ export const getAvailability = createServerFn({ method: "GET" })
         list.push(r.time_slot);
       }
     }
-    for (const d of Object.keys(map)) {
-      const s = new Set(map[d]);
-      if (s.has("ochtend") && s.has("middag")) s.add("hele_dag");
-      map[d] = Array.from(s);
+    for (const room of Object.keys(perRoom)) {
+      for (const d of Object.keys(perRoom[room])) {
+        const s = new Set(perRoom[room][d]);
+        if (s.has("ochtend") && s.has("middag")) s.add("hele_dag");
+        perRoom[room][d] = Array.from(s);
+      }
     }
-    return { unavailable: map };
+    return { unavailable: perRoom };
   });
 
 export const createBooking = createServerFn({ method: "POST" })
@@ -62,8 +89,9 @@ export const createBooking = createServerFn({ method: "POST" })
 
     const { data: existing, error: checkErr } = await supabaseAdmin
       .from("bookings")
-      .select("time_slot")
+      .select("time_slot, room")
       .eq("booking_date", data.booking_date)
+      .eq("room", data.room)
       .neq("status", "cancelled");
     if (checkErr) throw new Error(checkErr.message);
 
@@ -73,7 +101,7 @@ export const createBooking = createServerFn({ method: "POST" })
       taken.has(data.time_slot) ||
       (data.time_slot === "hele_dag" && (taken.has("ochtend") || taken.has("middag")));
     if (conflict) {
-      throw new Error("Dit tijdslot is helaas net geboekt. Kies een ander moment.");
+      throw new Error("Dit tijdslot is helaas net geboekt voor deze kamer. Kies een andere kamer of tijd.");
     }
 
     const extraLines: string[] = [];
@@ -92,6 +120,7 @@ export const createBooking = createServerFn({ method: "POST" })
       .insert({
         booking_date: data.booking_date,
         time_slot: data.time_slot,
+        room: data.room,
         name: data.name,
         email: data.email,
         phone: data.phone || null,
