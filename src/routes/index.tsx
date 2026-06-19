@@ -26,6 +26,9 @@ import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
 import sfeerOverview from "@/assets/sfeer/mk17.jpg.asset.json";
 import sfeerKitchen from "@/assets/sfeer/mk18.jpg.asset.json";
 import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
+import omgevingGebouw from "@/assets/omgeving/gebouw.png.asset.json";
+import omgevingPad from "@/assets/omgeving/pad.png.asset.json";
+import omgevingLaan from "@/assets/omgeving/laan.png.asset.json";
 
 import {
   createBooking,
