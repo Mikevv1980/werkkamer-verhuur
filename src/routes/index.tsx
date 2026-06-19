@@ -3,12 +3,16 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState, type ReactNode } from "react";
 import { CheckCircle2, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
-import heroVergaderkamer from "@/assets/hero-vergaderkamer.jpg";
-import galleryPresentatie from "@/assets/gallery-presentatie.jpg";
-import galleryKoffie from "@/assets/gallery-koffie.jpg";
-import galleryDijkenduin from "@/assets/gallery-dijkenduin.jpg";
-import natureBos from "@/assets/nature-bos.jpg";
-import natureUitzicht from "@/assets/nature-uitzicht.jpg";
+import roomHero from "@/assets/uploads/5.jpg.asset.json";
+import coffeeMachine from "@/assets/uploads/1.jpg.asset.json";
+import valuesCards from "@/assets/uploads/2.jpg.asset.json";
+import kitchenette from "@/assets/uploads/3.jpg.asset.json";
+import windowPlants from "@/assets/uploads/4.jpg.asset.json";
+import cozyTable from "@/assets/uploads/6.jpg.asset.json";
+import naturePath from "@/assets/uploads/7.jpg.asset.json";
+import landgoedPath from "@/assets/uploads/8.jpg.asset.json";
+import cupBuilding from "@/assets/uploads/9.jpg.asset.json";
+import sunnyAvenue from "@/assets/uploads/10.jpg.asset.json";
 import {
   createBooking,
   getAvailability,
@@ -78,19 +82,34 @@ const featurePoints = [
 
 const gallery = [
   {
-    src: galleryPresentatie,
-    alt: "Werkruimte met scherm voor overleg en presentaties",
-    caption: "Alles wat je nodig hebt voor overleg en presentatie.",
+    src: coffeeMachine.url,
+    alt: "Nespresso-apparaat dat koffie zet in een kopje op de werkkamer",
+    caption: "Koffie en rust bij binnenkomst.",
   },
   {
-    src: galleryKoffie,
-    alt: "Nespresso koffie-apparaat met capsules",
-    caption: "Nespresso-koffie naar keuze.",
+    src: valuesCards.url,
+    alt: "Kaarten op tafel tijdens een coach- of werksessie in de werkkamer",
+    caption: "Geschikt voor coaching, sessies en reflectie.",
   },
   {
-    src: galleryDijkenduin,
-    alt: "Historisch wit gebouw op landgoed Dijk en Duin in Bakkum",
-    caption: "Gelegen op landgoed Dijk en Duin.",
+    src: kitchenette.url,
+    alt: "Warme kitchenette in de werkkamer met koffiehoek en scherm",
+    caption: "Eigen koffiehoek en scherm voor presentaties.",
+  },
+  {
+    src: windowPlants.url,
+    alt: "Planten op de vensterbank met uitzicht op het landgoed",
+    caption: "Veel daglicht en een groen uitzicht.",
+  },
+  {
+    src: cozyTable.url,
+    alt: "Ronde tafel met zachte stoelen, laptop en kopje koffie in de werkkamer",
+    caption: "Een warme setting voor overleg en focus.",
+  },
+  {
+    src: cupBuilding.url,
+    alt: "Kopje op tafel met op de achtergrond het historische gebouw van Dijk en Duin",
+    caption: "Binnen en buiten voelt de plek rustig aan.",
   },
 ];
 
@@ -114,13 +133,13 @@ function Hero() {
       <div className="mx-auto max-w-6xl px-6 pt-10 pb-6 sm:pt-12">
         <div className="relative overflow-hidden rounded-3xl">
           <img
-            src={heroVergaderkamer}
-            alt="Lichte werkkamer met ronde donkere tafel en zachte stoelen, uitkijkend op een groen landgoed"
+            src={roomHero.url}
+            alt="Ronde houten tafel met zachte stoelen in een warme lichte werkkamer"
             width={1600}
             height={1100}
             className="h-[68vh] min-h-[460px] w-full object-cover sm:h-[78vh]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
           <div className="absolute inset-0 flex items-end p-6 sm:items-center sm:p-12 lg:p-16">
             <div className="max-w-xl text-white">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
@@ -130,7 +149,7 @@ function Hero() {
                 Een lichte werkkamer voor overleg, brainstorm en workshop.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
-                Rustige, lichte werkruimte voor maximaal vier personen, midden op landgoed
+                Rustige, warme werkruimte voor maximaal vier personen, midden op landgoed
                 Dijk en Duin. Inclusief groot scherm met Apple-TV, koffie en een kop soep
                 tussendoor.
               </p>
@@ -184,7 +203,7 @@ function Ruimte() {
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
             De werkkamer is ingericht voor max. vier personen rond een ronde tafel. Geen
-            kantoorgevoel, geen sterke akoestische hardheid — wel daglicht, plantjes en een
+            kantoorgevoel, geen harde sfeer — wel daglicht, planten, warme materialen en een
             hoek voor een korte pauze. Voor wie even uit het kantoor wil zonder thuis te
             werken.
           </p>
@@ -215,22 +234,36 @@ function Ruimte() {
 function Gallery() {
   return (
     <section className="pb-20 sm:pb-24">
-      <div className="mx-auto grid max-w-6xl gap-3 px-6 sm:grid-cols-3">
-        {gallery.map((g) => (
-          <figure key={g.caption} className="relative overflow-hidden rounded-2xl">
-            <img
-              src={g.src}
-              alt={g.alt}
-              loading="lazy"
-              width={900}
-              height={700}
-              className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105 sm:h-80"
-            />
-            <figcaption className="absolute bottom-3 left-3 right-3 rounded-full bg-background/90 px-3 py-1.5 text-center text-xs font-medium text-foreground backdrop-blur-sm">
-              {g.caption}
-            </figcaption>
-          </figure>
-        ))}
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+              Sfeer van de werkkamer
+            </p>
+            <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+              Warm, rustig en persoonlijk ingericht.
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+            De aangeleverde foto’s laten precies zien wat de plek bijzonder maakt: zachte
+            materialen, koffie, groen en het historische karakter van Dijk en Duin.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {gallery.map((g) => (
+            <figure key={g.caption} className="overflow-hidden rounded-2xl border border-border/70 bg-card/60">
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                width={900}
+                height={700}
+                className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <figcaption className="px-4 py-3 text-sm text-foreground">{g.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -238,41 +271,53 @@ function Gallery() {
 
 function Omgeving() {
   return (
-    <section id="omgeving" className="bg-accent">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 sm:py-24 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src={natureBos}
-            alt="Duinbos vlakbij Werkkamer Bakkum"
-            loading="lazy"
-            width={700}
-            height={900}
-            className="h-full max-h-[440px] w-full rounded-2xl object-cover"
-          />
-          <img
-            src={natureUitzicht}
-            alt="Uitzicht door de bomen op het landgoed"
-            loading="lazy"
-            width={700}
-            height={900}
-            className="mt-12 h-full max-h-[440px] w-full rounded-2xl object-cover"
-          />
-        </div>
-        <div className="flex flex-col justify-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-            Omgeving
-          </p>
-          <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-            Een plek waar een sessie ook buiten de kamer verder werkt.
-          </h2>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-            De fijnste ideeën komen vaak tijdens een rondje wandelen. Onder de mooie bomen
-            van het landgoed, langs het oude historische gebouw of via een natuurpad richting
-            de duinen, krijg je een nieuw perspectief, ook letterlijk.
-          </p>
-          <p className="mt-5 text-sm font-semibold text-primary">
-            Gesprek, lunch of diner bij je aanvraag.
-          </p>
+    <section id="omgeving" className="bg-accent/70">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
+          <div className="flex flex-col justify-center">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+              Omgeving
+            </p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+              Een plek waar een sessie ook buiten de kamer verder werkt.
+            </h2>
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+              De fijnste ideeën komen vaak tijdens een rondje wandelen. Onder de mooie bomen
+              van het landgoed, langs het oude historische gebouw of via een natuurpad richting
+              de duinen, krijg je een nieuw perspectief, ook letterlijk.
+            </p>
+            <p className="mt-5 text-sm font-semibold text-primary">
+              Gesprek, lunch of diner bij je aanvraag.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <img
+              src={naturePath.url}
+              alt="Natuurpad en bomen rondom de werkkamer in Bakkum"
+              loading="lazy"
+              width={800}
+              height={900}
+              className="h-72 w-full rounded-2xl object-cover sm:h-[420px]"
+            />
+            <div className="grid gap-4">
+              <img
+                src={landgoedPath.url}
+                alt="Pad langs het historische gebouw op landgoed Dijk en Duin"
+                loading="lazy"
+                width={800}
+                height={500}
+                className="h-52 w-full rounded-2xl object-cover"
+              />
+              <img
+                src={sunnyAvenue.url}
+                alt="Zonnige laan en historisch gebouw in de buurt van de werkkamer"
+                loading="lazy"
+                width={800}
+                height={500}
+                className="h-52 w-full rounded-2xl object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -415,12 +460,22 @@ function Aanvraag() {
             Vul je gegevens in en je krijgt zo snel mogelijk een reactie via e-mail of
             telefoon. We bevestigen datum, tijd en eventuele wensen.
           </p>
-          <div className="mt-6 rounded-2xl border border-accent bg-accent/60 p-5 text-sm leading-relaxed text-foreground">
-            <p className="font-semibold">Gunstige actie</p>
-            <p className="mt-1 text-muted-foreground">
-              Met max. vier personen, een hele dag, lunch en een wandeling bij Dijk en Duin
-              vanaf 200 euro / dag.
-            </p>
+          <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card/60">
+            <img
+              src={cupBuilding.url}
+              alt="Kopje op de tafel in de werkkamer met uitzicht op het historische gebouw"
+              loading="lazy"
+              width={900}
+              height={640}
+              className="h-56 w-full object-cover"
+            />
+            <div className="p-5 text-sm leading-relaxed text-foreground">
+              <p className="font-semibold">Gunstige actie</p>
+              <p className="mt-1 text-muted-foreground">
+                Met max. vier personen, een hele dag, lunch en een wandeling bij Dijk en Duin
+                vanaf 200 euro / dag.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -431,12 +486,9 @@ function Aanvraag() {
               Aanvraag ontvangen!
             </h3>
             <p className="mt-3 text-sm text-muted-foreground">
-              Je krijgt een bevestiging op{" "}
-              <span className="font-medium text-foreground">{form.email}</span>.
+              Je krijgt een bevestiging op <span className="font-medium text-foreground">{form.email}</span>.
             </p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Referentie: {confirmedId.slice(0, 8)}
-            </p>
+            <p className="mt-2 text-xs text-muted-foreground">Referentie: {confirmedId.slice(0, 8)}</p>
             <button
               onClick={() => {
                 setConfirmedId(null);
@@ -486,19 +538,14 @@ function Aanvraag() {
               />
             </Field>
 
-            {/* Calendar */}
             <div className="mt-6 rounded-xl bg-muted/40 p-4">
               <div className="flex items-center justify-between">
-                <p className="font-serif text-sm capitalize text-card-foreground">
-                  {monthName}
-                </p>
+                <p className="font-serif text-sm capitalize text-card-foreground">{monthName}</p>
                 <div className="flex gap-1">
                   <button
                     type="button"
                     onClick={() =>
-                      setMonthCursor(
-                        new Date(monthCursor.getFullYear(), monthCursor.getMonth() - 1, 1),
-                      )
+                      setMonthCursor(new Date(monthCursor.getFullYear(), monthCursor.getMonth() - 1, 1))
                     }
                     className="rounded-md p-1.5 text-muted-foreground hover:bg-background"
                     aria-label="Vorige maand"
@@ -508,9 +555,7 @@ function Aanvraag() {
                   <button
                     type="button"
                     onClick={() =>
-                      setMonthCursor(
-                        new Date(monthCursor.getFullYear(), monthCursor.getMonth() + 1, 1),
-                      )
+                      setMonthCursor(new Date(monthCursor.getFullYear(), monthCursor.getMonth() + 1, 1))
                     }
                     className="rounded-md p-1.5 text-muted-foreground hover:bg-background"
                     aria-label="Volgende maand"
@@ -656,19 +701,14 @@ function Aanvraag() {
                 maxLength={1000}
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                placeholder="Bijvoorbeeld lunch of een goede maaltijd, technische wensen of geweren opstelling."
+                placeholder="Bijvoorbeeld lunch of een goede maaltijd, technische wensen of gewenste opstelling."
                 className={inputCls}
               />
             </Field>
 
             <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
               <span>
-                Indicatie:{" "}
-                {selectedSlot === "hele_dag"
-                  ? "€120"
-                  : selectedSlot
-                    ? "€80 per dagdeel"
-                    : "—"}
+                Indicatie: {selectedSlot === "hele_dag" ? "€120" : selectedSlot ? "€80 per dagdeel" : "—"}
               </span>
               {!selectedDate || !selectedSlot ? (
                 <span>Vul datum en tijden in</span>
@@ -678,9 +718,7 @@ function Aanvraag() {
             </div>
 
             {mutation.isError && (
-              <p className="mt-3 text-sm text-destructive">
-                {(mutation.error as Error).message}
-              </p>
+              <p className="mt-3 text-sm text-destructive">{(mutation.error as Error).message}</p>
             )}
 
             <button
