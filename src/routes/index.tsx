@@ -558,7 +558,7 @@ function Aanvraag() {
           </p>
           <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card/60">
             <img
-              src={selectedRoom === "kamer1" ? cupBuilding.url : k2View.url}
+              src={selectedRoom === "kamer1" ? cupBuilding.url : k2Wide.url}
               alt={`Sfeerbeeld van ${currentRoom.label}`}
               loading="lazy"
               width={900}
