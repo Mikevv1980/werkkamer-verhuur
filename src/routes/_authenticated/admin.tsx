@@ -106,6 +106,9 @@ function AdminPage() {
                           year: "numeric",
                         })}
                       </p>
+                      <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                        {(b as { room?: string }).room === "kamer2" ? "Kamer 2" : "Kamer 1"}
+                      </span>
                       <span className="rounded-full bg-terracotta/10 px-2.5 py-0.5 text-xs font-medium text-terracotta">
                         {slotLabel}
                       </span>
