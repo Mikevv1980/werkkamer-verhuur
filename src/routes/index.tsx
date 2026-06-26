@@ -167,7 +167,7 @@ function Hero() {
                 Twee lichte werkkamers voor overleg, brainstorm en workshop.
               </h1>
               <p className="mt-5 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
-                Kies de kamer die past bij je sessie — een ruime werkkamer met scherm, of een
+                Kies de kamer die past bij je sessie. Een ruime werkkamer met scherm, of een
                 knusse kamer met uitzicht op het landgoed. Inclusief koffie en een wandeling
                 door de duinen.
               </p>
