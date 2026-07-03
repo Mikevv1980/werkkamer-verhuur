@@ -331,7 +331,7 @@ function Gallery() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Een doorkijk in Kamer 1 en Kamer 2: zachte materialen, koffie, groen en het
+            Een doorkijk: zachte materialen, koffie, groen en het
             historische karakter van Dijk en Duin.
           </p>
         </div>
