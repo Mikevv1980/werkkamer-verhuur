@@ -147,18 +147,18 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="relative">
-      <div className="mx-auto max-w-6xl px-6 pt-10 pb-6 sm:pt-12">
-        <div className="relative overflow-hidden rounded-3xl">
-          <img
-            src={roomHero.url}
-            alt="Ronde houten tafel met zachte stoelen in een warme lichte werkkamer"
-            width={1600}
-            height={1100}
-            className="h-[68vh] min-h-[460px] w-full object-cover sm:h-[78vh]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-          <div className="absolute inset-0 flex items-end p-6 sm:items-center sm:p-12 lg:p-16">
+    <section className="relative -mt-[73px]">
+      <div className="relative">
+        <img
+          src={roomHero.url}
+          alt="Ronde houten tafel met zachte stoelen in een warme lichte werkkamer"
+          width={1600}
+          height={1100}
+          className="h-[92vh] min-h-[560px] w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto w-full max-w-6xl px-6 pt-16">
             <div className="max-w-xl text-white">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
                 Een productieve dag in Bakkum
@@ -192,6 +192,7 @@ function Hero() {
     </section>
   );
 }
+
 
 function Stats() {
   return (
