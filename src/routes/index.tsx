@@ -525,7 +525,7 @@ function Tarief() {
                 {k.daily} <span className="text-2xl">euro</span>
               </p>
               <p className="mt-3 text-xs leading-relaxed text-background/80">
-                Voor een dag heerlijk geconcentreerd te werken.
+                Voor een dag brainstormen, teamoverleg of workshops.
               </p>
             </div>,
           ])}
