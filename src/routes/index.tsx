@@ -456,7 +456,7 @@ function Lunch() {
               Even samen lunchen bij De Oude Keuken.
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              Op loopafstand van de werkkamer ligt De Oude Keuken — een bijzondere plek op het landgoed
+              Op loopafstand van de werkkamer ligt De Oude Keuken. Een bijzondere plek op het landgoed
               waar met liefde wordt gekookt met biologische en lokale producten. Ideaal om tijdens een
               workshop of werkdag samen even te ontspannen aan tafel.
             </p>
