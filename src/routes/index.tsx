@@ -905,7 +905,7 @@ function Aanvraag() {
                 onChange={(e) => setForm({ ...form, num_people: e.target.value })}
                 className={inputCls}
               >
-                {[1, 2, 3, 4].map((n) => (
+                {[1, 2, 3, 4, 5].map((n) => (
                   <option key={n} value={n}>
                     {n} {n === 1 ? "persoon" : "personen"}
                   </option>
