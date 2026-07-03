@@ -196,18 +196,21 @@ function Hero() {
 
 function Stats() {
   return (
-    <section className="border-y border-border bg-background">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-border lg:grid-cols-4">
-        {stats.map((s) => (
-          <div key={s.value} className="bg-background px-6 py-6">
-            <p className="font-serif text-xl text-foreground sm:text-2xl">{s.value}</p>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.label}</p>
-          </div>
-        ))}
+    <section className="relative z-10 -mt-16 sm:-mt-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border shadow-2xl shadow-black/20 lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.value} className="bg-background px-6 py-6">
+              <p className="font-serif text-xl text-foreground sm:text-2xl">{s.value}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
 
 function Ruimte() {
   return (
