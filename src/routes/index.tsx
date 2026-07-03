@@ -427,8 +427,8 @@ function Tarief() {
             Reserveer per uur of kies direct voor een hele dag.
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Geen vaste abonnementen, geen lange contracten. Boek zoals het past, en alles is
-            inbegrepen — schoonmaak, koffie, water en het uitzicht.
+            Boek zoals het past en alles is inbegrepen ; schoonmaak, koffie, thee,water
+            en het prachtige uitzicht.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -452,7 +452,7 @@ function Tarief() {
                 {k.daily} <span className="text-2xl">euro</span>
               </p>
               <p className="mt-3 text-xs leading-relaxed text-background/80">
-                Voor workshops, brainstorm of trainingsdag.
+                Voor een dag heerlijk geconcentreerd te werken.
               </p>
             </div>,
           ])}
