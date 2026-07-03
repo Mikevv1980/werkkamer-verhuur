@@ -90,7 +90,7 @@ const featurePoints = [
     body: "Groot tv-scherm met Apple-TV voor presentaties. Sluit je apparaat aan, klaar.",
   },
   {
-    title: "Koffie en kraanwater",
+    title: "Koffie, thee en kraanwater",
     body: "Een kleine keuken met Nespresso-koffie, thee, kraanwater en een mooi servies.",
   },
   {
