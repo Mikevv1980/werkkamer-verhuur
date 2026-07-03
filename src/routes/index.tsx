@@ -552,7 +552,7 @@ function Aanvraag() {
     email: "",
     phone: "",
     num_people: "2",
-    room_purpose: "Brainstormsessie",
+    room_purpose: "",
     start_time: "",
     end_time: "",
     notes: "",
