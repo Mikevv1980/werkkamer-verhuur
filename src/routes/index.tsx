@@ -671,6 +671,7 @@ function Aanvraag() {
           </div>
         ) : (
           <form
+            noValidate
             className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
             onSubmit={(e) => {
               e.preventDefault();
