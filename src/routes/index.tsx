@@ -119,7 +119,7 @@ const kamers = [
     name: "Kamer 2",
     tagline: "Compacte sfeervolle kamer ",
     description:
-      "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, kuip stoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg met 2 tot 3 personen.",
+      "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, kuip stoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg tussen 2  personen.",
     hourly: 20,
     daily: 95,
     image: k2Wide.url,
