@@ -846,8 +846,7 @@ function Aanvraag() {
 
             <div className="mt-4 grid grid-cols-2 gap-3">
               <Field label="Starttijd">
-                <input
-                  type="time"
+                <select
                   value={form.start_time}
                   onChange={(e) => {
                     const start_time = e.target.value;
@@ -862,11 +861,17 @@ function Aanvraag() {
                     }
                   }}
                   className={inputCls}
-                />
+                >
+                  <option value="">Kies tijd</option>
+                  {TIME_OPTIONS.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
               </Field>
               <Field label="Eindtijd">
-                <input
-                  type="time"
+                <select
                   value={form.end_time}
                   onChange={(e) => {
                     const end_time = e.target.value;
@@ -881,9 +886,17 @@ function Aanvraag() {
                     }
                   }}
                   className={inputCls}
-                />
+                >
+                  <option value="">Kies tijd</option>
+                  {TIME_OPTIONS.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
               </Field>
             </div>
+
 
 
             <Field label="Aantal personen">
