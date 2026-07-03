@@ -109,7 +109,7 @@ const kamers = [
     hourly: 20,
     daily: 120,
     image: roomHero.url,
-    features: ["Max. 4 personen", "Groot scherm met Apple-TV", "Eigen koffiehoek"],
+    features: ["Max. 5 personen", "Groot scherm met Apple-TV", "Eigen koffiehoek"],
   },
   {
     value: "kamer2" as const,
