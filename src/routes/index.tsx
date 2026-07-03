@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Kies uit Kamer 1 (vanaf 20 euro p/u) of Kamer 2 (vanaf 15 euro p/u). Ideaal voor overleg, brainstorm en workshop.",
+          "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Kies uit Kamer 1 (vanaf 25 euro p/u) of Kamer 2 (vanaf 20 euro p/u). Ideaal voor overleg, brainstorm en workshop.",
       },
       {
         property: "og:title",
@@ -83,7 +83,7 @@ function endOfMonth(d: Date) {
 const stats = [
   { value: "2 kamers", label: "kies de kamer die bij je sessie past" },
   { value: "7 dagen", label: "in de week beschikbaar in overleg" },
-  { value: "vanaf €15 / uur", label: "of vanaf 75 euro voor een hele dag" },
+  { value: "vanaf €20 / uur", label: "of vanaf 95 euro voor een hele dag" },
   { value: "Dijk en Duin", label: "rustige plek in Bakkum" },
 ];
 
@@ -109,8 +109,8 @@ const kamers = [
     tagline: "Ruime werkkamer met groot scherm",
     description:
       "Onze grootste werkkamer. Ronde tafel voor maximaal vijf personen, een groot tv-scherm met Apple-TV en veel daglicht. Ideaal voor presentaties, workshops en langere sessies.",
-    hourly: 20,
-    daily: 120,
+    hourly: 25,
+    daily: 150,
     image: roomHero.url,
     features: ["Max. 5 personen", "Groot scherm met Apple-TV", "Eigen koffiehoek"],
   },
@@ -120,8 +120,8 @@ const kamers = [
     tagline: "Compacte sfeervolle kamer met uitzicht",
     description:
       "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, comfortabele stoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg met 2 tot 3 personen.",
-    hourly: 15,
-    daily: 75,
+    hourly: 20,
+    daily: 95,
     image: k2Wide.url,
     features: ["2–3 personen", "Veel daglicht en groen uitzicht", "Rustige, warme sfeer"],
   },
