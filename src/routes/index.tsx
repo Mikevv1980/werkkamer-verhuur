@@ -123,7 +123,7 @@ const kamers = [
     hourly: 20,
     daily: 95,
     image: k2Wide.url,
-    features: ["2–3 personen", "Veel daglicht en groen uitzicht", "Rustige, warme sfeer"],
+    features: ["Max. 2 personen", "Veel daglicht en groen uitzicht", "Rustige, warme sfeer"],
   },
 ];
 
