@@ -129,6 +129,65 @@ export const createBooking = createServerFn({ method: "POST" })
       .select("id")
       .single();
     if (error) throw new Error(error.message);
+
+    // Fire-and-forget notification email to the owner.
+    try {
+      const [{ render }, React, { template }] = await Promise.all([
+        import("react-email"),
+        import("react"),
+        import("@/lib/email-templates/booking-notification"),
+      ]);
+      const roomLabel = ROOMS.find((r) => r.value === data.room)?.label ?? data.room;
+      const slot = TIME_SLOTS.find((t) => t.value === data.time_slot);
+      const slotLabel = slot ? `${slot.label} (${slot.time})` : data.time_slot;
+      const templateData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        bookingDate: data.booking_date,
+        timeSlot: slotLabel,
+        room: roomLabel,
+        numPeople: data.num_people,
+        roomPurpose: data.room_purpose || undefined,
+        startTime: data.start_time || undefined,
+        endTime: data.end_time || undefined,
+        notes: data.notes || undefined,
+      };
+      const element = React.createElement(template.component, templateData);
+      const html = await render(element);
+      const text = await render(element, { plainText: true });
+      const subject =
+        typeof template.subject === "function"
+          ? template.subject(templateData)
+          : template.subject;
+      const messageId = crypto.randomUUID();
+      const recipient = template.to!;
+      await supabaseAdmin.from("email_send_log").insert({
+        message_id: messageId,
+        template_name: "booking-notification",
+        recipient_email: recipient,
+        status: "pending",
+      });
+      await supabaseAdmin.rpc("enqueue_email", {
+        queue_name: "transactional_emails",
+        payload: {
+          message_id: messageId,
+          to: recipient,
+          from: "Werkkamer Huren <noreply@werkkamerhuren.nl>",
+          sender_domain: "notify.werkkamerhuren.nl",
+          subject,
+          html,
+          text,
+          purpose: "transactional",
+          label: "booking-notification",
+          idempotency_key: `booking-${inserted.id}`,
+          queued_at: new Date().toISOString(),
+        },
+      });
+    } catch (mailErr) {
+      console.error("Failed to enqueue booking notification email", mailErr);
+    }
+
     return { id: inserted.id };
   });
 
