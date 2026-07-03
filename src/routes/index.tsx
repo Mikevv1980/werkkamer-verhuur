@@ -117,9 +117,9 @@ const kamers = [
   {
     value: "kamer2" as const,
     name: "Kamer 2",
-    tagline: "Compacte sfeervolle kamer ",
+    tagline: "Compacte, sfeervolle kamer",
     description:
-      "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, kuip stoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg tussen 2  personen.",
+      "Een knus, persoonlijk ingerichte kamer met ovalen houten tafel, kuipstoelen en uitzicht op het groen van Dijk en Duin. Perfect voor een gesprek, coachsessie of geconcentreerd overleg tussen 2 personen.",
     hourly: 20,
     daily: 95,
     image: k2Wide.url,
@@ -500,7 +500,7 @@ function Tarief() {
             Reserveer per uur of kies direct voor een hele dag.
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Boek zoals het past en alles is inbegrepen ; schoonmaak, koffie, thee,water
+            Boek zoals het past — alles is inbegrepen: schoonmaak, koffie, thee, water
             en het prachtige uitzicht.
           </p>
         </div>
