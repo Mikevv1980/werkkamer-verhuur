@@ -831,19 +831,14 @@ function Aanvraag() {
 
             <Field label="Datum">
               <input
-                type="text"
-                readOnly
-                value={
-                  selectedDate
-                    ? new Date(selectedDate).toLocaleDateString("nl-NL", {
-                        weekday: "long",
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })
-                    : ""
-                }
-                placeholder="dd-mm-jjjj"
+                type="date"
+                min={fmtDate(today)}
+                value={selectedDate ?? ""}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setSelectedDate(v || null);
+                  setSelectedSlot(null);
+                }}
                 className={inputCls}
               />
             </Field>
@@ -853,7 +848,18 @@ function Aanvraag() {
                 <input
                   type="time"
                   value={form.start_time}
-                  onChange={(e) => setForm({ ...form, start_time: e.target.value })}
+                  onChange={(e) => {
+                    const start_time = e.target.value;
+                    setForm({ ...form, start_time });
+                    const end = form.end_time;
+                    if (start_time && end) {
+                      const sh = Number(start_time.slice(0, 2));
+                      const eh = Number(end.slice(0, 2));
+                      if (sh < 12 && eh >= 16) setSelectedSlot("hele_dag");
+                      else if (sh < 12) setSelectedSlot("ochtend");
+                      else setSelectedSlot("middag");
+                    }
+                  }}
                   className={inputCls}
                 />
               </Field>
@@ -861,11 +867,23 @@ function Aanvraag() {
                 <input
                   type="time"
                   value={form.end_time}
-                  onChange={(e) => setForm({ ...form, end_time: e.target.value })}
+                  onChange={(e) => {
+                    const end_time = e.target.value;
+                    setForm({ ...form, end_time });
+                    const start = form.start_time;
+                    if (start && end_time) {
+                      const sh = Number(start.slice(0, 2));
+                      const eh = Number(end_time.slice(0, 2));
+                      if (sh < 12 && eh >= 16) setSelectedSlot("hele_dag");
+                      else if (sh < 12) setSelectedSlot("ochtend");
+                      else setSelectedSlot("middag");
+                    }
+                  }}
                   className={inputCls}
                 />
               </Field>
             </div>
+
 
             <Field label="Aantal personen">
               <select
