@@ -109,8 +109,8 @@ const kamers = [
     tagline: "Ruime werkkamer met groot scherm",
     description:
       "Onze grootste werkkamer. Ronde tafel voor maximaal vijf personen, een groot tv-scherm met Apple-TV en veel daglicht. Ideaal voor presentaties, workshops en langere sessies.",
-    hourly: 20,
-    daily: 120,
+    hourly: 25,
+    daily: 150,
     image: roomHero.url,
     features: ["Max. 5 personen", "Groot scherm met Apple-TV", "Eigen koffiehoek"],
   },
