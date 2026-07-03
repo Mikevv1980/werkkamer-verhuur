@@ -844,7 +844,7 @@ function Aanvraag() {
               />
             </Field>
 
-            <div className="mt-4 grid grid-cols-2 gap-3">
+            <div className="mt-4 grid grid-cols-2 gap-3 [&>label]:mt-0">
               <Field label="Starttijd">
                 <select
                   value={form.start_time}
@@ -905,7 +905,7 @@ function Aanvraag() {
                 onChange={(e) => setForm({ ...form, num_people: e.target.value })}
                 className={inputCls}
               >
-                {[1, 2, 3, 4].map((n) => (
+                {[1, 2, 3, 4, 5].map((n) => (
                   <option key={n} value={n}>
                     {n} {n === 1 ? "persoon" : "personen"}
                   </option>
