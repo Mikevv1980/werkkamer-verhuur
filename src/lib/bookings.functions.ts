@@ -15,15 +15,15 @@ export const ROOMS = [
     value: "kamer1",
     label: "Kamer 1",
     tagline: "Ruime werkkamer met groot scherm",
-    hourly: 20,
-    daily: 120,
+    hourly: 25,
+    daily: 150,
   },
   {
     value: "kamer2",
     label: "Kamer 2",
     tagline: "Compacte sfeervolle kamer met uitzicht",
-    hourly: 15,
-    daily: 75,
+    hourly: 20,
+    daily: 95,
   },
 ] as const;
 
