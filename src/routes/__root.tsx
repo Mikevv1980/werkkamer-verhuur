@@ -126,13 +126,8 @@ function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 font-serif text-base font-semibold tracking-tight text-foreground">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-            wb
-          </span>
-          Werkkamer Bakkum
-        </Link>
-        <div className="hidden items-center gap-8 sm:flex">
+        <Link to="/" className="sr-only">Werkkamer Bakkum</Link>
+        <div className="flex flex-1 items-center justify-end gap-8">
           <a href="/#tarief" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
             Tarief
           </a>
