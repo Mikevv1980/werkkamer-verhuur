@@ -162,13 +162,17 @@ export const createBooking = createServerFn({ method: "POST" })
           : template.subject;
       const messageId = crypto.randomUUID();
       const recipient = template.to!;
-      await supabaseAdmin.from("email_send_log").insert({
+      const admin = supabaseAdmin as unknown as {
+        from: (t: string) => { insert: (v: unknown) => Promise<unknown> };
+        rpc: (fn: string, args: unknown) => Promise<unknown>;
+      };
+      await admin.from("email_send_log").insert({
         message_id: messageId,
         template_name: "booking-notification",
         recipient_email: recipient,
         status: "pending",
       });
-      await supabaseAdmin.rpc("enqueue_email", {
+      await admin.rpc("enqueue_email", {
         queue_name: "transactional_emails",
         payload: {
           message_id: messageId,
