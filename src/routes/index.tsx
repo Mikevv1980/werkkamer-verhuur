@@ -324,14 +324,14 @@ function Gallery() {
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
-              Sfeer van beide kamers
+              SFEER
             </p>
             <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
               Warm, rustig en persoonlijk ingericht.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Een doorkijk in Kamer 1 en Kamer 2: zachte materialen, koffie, groen en het
+            Een doorkijk: zachte materialen, koffie, groen en het
             historische karakter van Dijk en Duin.
           </p>
         </div>
