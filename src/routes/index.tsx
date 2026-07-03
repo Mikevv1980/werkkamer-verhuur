@@ -30,8 +30,8 @@ import omgevingGebouw from "@/assets/omgeving/gebouw-nieuw.jpg.asset.json";
 import omgevingPad from "@/assets/omgeving/pad.png.asset.json";
 import omgevingLaan from "@/assets/omgeving/laan.png.asset.json";
 import dokTerras from "@/assets/dok/terras-muziek.png.asset.json";
-import dokEten from "@/assets/dok/eten.webp.asset.json";
-import dokSfeer from "@/assets/dok/interieur.jpg.asset.json";
+import dokEten from "@/assets/dok/keuken.jpg.asset.json";
+import dokSfeer from "@/assets/dok/gevel.png.asset.json";
 
 import {
   createBooking,
@@ -433,15 +433,15 @@ function Lunch() {
             />
             <img
               src={dokEten.url}
-              alt="Biologische lunch bij De Oude Keuken"
+              alt="Chef bereidt lunch bij De Oude Keuken"
               loading="lazy"
-              width={800}
-              height={600}
+              width={1200}
+              height={800}
               className="col-span-3 h-40 w-full rounded-2xl object-cover sm:h-48"
             />
             <img
               src={dokSfeer.url}
-              alt="Sfeerbeeld interieur De Oude Keuken"
+              alt="Gevel van De Oude Keuken"
               loading="lazy"
               width={800}
               height={600}
