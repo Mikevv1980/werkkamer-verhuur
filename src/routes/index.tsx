@@ -565,19 +565,13 @@ function Aanvraag() {
           </p>
           <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card/60">
             <img
-              src={selectedRoom === "kamer1" ? cupBuilding.url : k2Wide.url}
+              src={selectedRoom === "kamer1" ? sfeerOverview.url : k2Wide.url}
               alt={`Sfeerbeeld van ${currentRoom.label}`}
               loading="lazy"
               width={900}
               height={640}
-              className="h-56 w-full object-cover"
+              className="h-72 w-full object-cover"
             />
-            <div className="p-5 text-sm leading-relaxed text-foreground">
-              <p className="font-semibold">{currentRoom.label}</p>
-              <p className="mt-1 text-muted-foreground">
-                €{currentRoom.hourly} per uur · €{currentRoom.daily} hele dag.
-              </p>
-            </div>
           </div>
         </div>
 
