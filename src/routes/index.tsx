@@ -347,9 +347,6 @@ function Gallery() {
                   height={700}
                   className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <span className="absolute left-3 top-3 rounded-full bg-background/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-foreground backdrop-blur-sm">
-                  {g.room}
-                </span>
               </div>
               <figcaption className="px-4 py-3 text-sm text-foreground">{g.caption}</figcaption>
             </figure>
