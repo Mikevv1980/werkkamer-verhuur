@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Kies uit Kamer 1 (vanaf 20 euro p/u) of Kamer 2 (vanaf 15 euro p/u). Ideaal voor overleg, brainstorm en workshop.",
+          "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Kies uit Kamer 1 (vanaf 25 euro p/u) of Kamer 2 (vanaf 20 euro p/u). Ideaal voor overleg, brainstorm en workshop.",
       },
       {
         property: "og:title",
