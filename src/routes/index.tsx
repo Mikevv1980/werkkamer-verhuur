@@ -224,8 +224,8 @@ function Ruimte() {
             Compact genoeg voor focus, ruim genoeg voor goede gesprekken.
           </h2>
           <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Geen kantoorgevoel, geen harde sfeer — wel daglicht, planten, warme materialen en
-            een hoek voor een korte pauze. Voor wie even uit het kantoor wil zonder thuis te
+            Geen kantoorgevoel, geen harde sfeer, maar wel daglicht, planten, warme materialen en
+            een heerlijk groene en rustige omgeving. Voor wie even uit het kantoor wil zonder thuis te
             werken.
           </p>
         </div>
