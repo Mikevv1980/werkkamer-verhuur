@@ -671,6 +671,7 @@ function Aanvraag() {
           </div>
         ) : (
           <form
+            noValidate
             className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
             onSubmit={(e) => {
               e.preventDefault();
@@ -845,8 +846,7 @@ function Aanvraag() {
 
             <div className="mt-4 grid grid-cols-2 gap-3">
               <Field label="Starttijd">
-                <input
-                  type="time"
+                <select
                   value={form.start_time}
                   onChange={(e) => {
                     const start_time = e.target.value;
@@ -861,11 +861,17 @@ function Aanvraag() {
                     }
                   }}
                   className={inputCls}
-                />
+                >
+                  <option value="">Kies tijd</option>
+                  {TIME_OPTIONS.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
               </Field>
               <Field label="Eindtijd">
-                <input
-                  type="time"
+                <select
                   value={form.end_time}
                   onChange={(e) => {
                     const end_time = e.target.value;
@@ -880,9 +886,17 @@ function Aanvraag() {
                     }
                   }}
                   className={inputCls}
-                />
+                >
+                  <option value="">Kies tijd</option>
+                  {TIME_OPTIONS.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
               </Field>
             </div>
+
 
 
             <Field label="Aantal personen">
@@ -951,6 +965,16 @@ function Aanvraag() {
 
 const inputCls =
   "mt-1.5 block w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-0";
+
+const TIME_OPTIONS: string[] = (() => {
+  const list: string[] = [];
+  for (let h = 8; h <= 20; h++) {
+    for (const m of [0, 30]) {
+      list.push(`${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`);
+    }
+  }
+  return list;
+})();
 
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
