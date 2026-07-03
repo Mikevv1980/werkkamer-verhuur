@@ -552,7 +552,7 @@ function Aanvraag() {
     email: "",
     phone: "",
     num_people: "2",
-    room_purpose: "Brainstormsessie",
+    room_purpose: "",
     start_time: "",
     end_time: "",
     notes: "",
@@ -881,18 +881,15 @@ function Aanvraag() {
               </select>
             </Field>
 
-            <Field label="Soort werkruimte">
-              <select
+            <Field label="Factuuradres">
+              <textarea
+                rows={3}
+                maxLength={500}
                 value={form.room_purpose}
                 onChange={(e) => setForm({ ...form, room_purpose: e.target.value })}
+                placeholder="Naam en adres waarop de factuur mag worden gezet"
                 className={inputCls}
-              >
-                <option>Werkoverleg</option>
-                <option>Brainstormsessie</option>
-                <option>Workshop</option>
-                <option>Coachgesprek</option>
-                <option>Anders</option>
-              </select>
+              />
             </Field>
 
             <Field label="Extra wensen">
