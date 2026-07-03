@@ -83,7 +83,7 @@ function endOfMonth(d: Date) {
 const stats = [
   { value: "2 kamers", label: "kies de kamer die bij je sessie past" },
   { value: "7 dagen", label: "in de week beschikbaar in overleg" },
-  { value: "vanaf €15 / uur", label: "of vanaf 75 euro voor een hele dag" },
+  { value: "vanaf €20 / uur", label: "of vanaf 95 euro voor een hele dag" },
   { value: "Dijk en Duin", label: "rustige plek in Bakkum" },
 ];
 
