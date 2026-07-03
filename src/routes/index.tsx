@@ -26,9 +26,9 @@ import k2Shelf from "@/assets/room2/IMG_4563.jpg.asset.json";
 import sfeerOverview from "@/assets/sfeer/mk17.jpg.asset.json";
 import sfeerKitchen from "@/assets/sfeer/mk18.jpg.asset.json";
 import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
-import omgevingToren from "@/assets/omgeving-toren.jpg.asset.json";
-import omgevingGebouw from "@/assets/omgeving-gebouw.jpg.asset.json";
-import omgevingNatuur from "@/assets/omgeving-natuur.jpg.asset.json";
+import omgevingGebouw from "@/assets/omgeving/gebouw.png.asset.json";
+import omgevingPad from "@/assets/omgeving/pad.png.asset.json";
+import omgevingLaan from "@/assets/omgeving/laan.png.asset.json";
 
 import {
   createBooking,
@@ -378,31 +378,33 @@ function Omgeving() {
               Gesprek, lunch of diner bij je aanvraag.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-5 sm:[grid-template-rows:repeat(2,minmax(0,1fr))] sm:h-[520px]">
-            <img
-              src={omgevingToren.url}
-              alt="Historische klokkentoren van landgoed Dijk en Duin"
-              loading="lazy"
-              width={900}
-              height={1200}
-              className="h-72 w-full rounded-2xl object-cover sm:col-span-3 sm:row-span-2 sm:h-full"
-            />
+          <div className="grid gap-4 sm:grid-cols-2 sm:[grid-template-rows:1fr]">
             <img
               src={omgevingGebouw.url}
-              alt="Karakteristiek hoofdgebouw met tudorstijl-details"
+              alt="Historisch hoofdgebouw met klokkentoren op landgoed Dijk en Duin"
               loading="lazy"
               width={800}
-              height={600}
-              className="h-52 w-full rounded-2xl object-cover sm:col-span-2 sm:row-span-1 sm:h-full"
+              height={900}
+              className="h-72 w-full rounded-2xl object-cover sm:h-full sm:min-h-[440px]"
             />
-            <img
-              src={omgevingNatuur.url}
-              alt="Natuurgebied met duinen en oude bomen rondom het landgoed"
-              loading="lazy"
-              width={800}
-              height={600}
-              className="h-52 w-full rounded-2xl object-cover sm:col-span-2 sm:row-span-1 sm:h-full"
-            />
+            <div className="grid gap-4 sm:grid-rows-2">
+              <img
+                src={omgevingPad.url}
+                alt="Wandelpad langs een karakteristiek huisje op het landgoed"
+                loading="lazy"
+                width={800}
+                height={500}
+                className="h-52 w-full rounded-2xl object-cover sm:h-full"
+              />
+              <img
+                src={omgevingLaan.url}
+                alt="Zonnige bomenlaan richting de duinen bij Bakkum"
+                loading="lazy"
+                width={800}
+                height={500}
+                className="h-52 w-full rounded-2xl object-cover sm:h-full"
+              />
+            </div>
           </div>
         </div>
       </div>
