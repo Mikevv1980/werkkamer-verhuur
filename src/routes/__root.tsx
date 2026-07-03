@@ -154,7 +154,7 @@ function Footer() {
     <footer className="bg-forest-dark text-background/80">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-6 sm:flex-row sm:items-center">
         <p className="font-serif text-base text-background">Werkkamer Bakkum</p>
-        <p className="text-xs">Dijk en Duin 11, Bakkum</p>
+        <p className="text-xs">Oude Parklaan 111, 1901 ZZ Castricum</p>
         <p className="text-xs">werkkamerbakkum @ {new Date().getFullYear()}</p>
       </div>
     </footer>
