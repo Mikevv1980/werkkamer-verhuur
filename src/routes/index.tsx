@@ -29,6 +29,9 @@ import sfeerNotes from "@/assets/sfeer/mk16.jpg.asset.json";
 import omgevingGebouw from "@/assets/omgeving/gebouw-nieuw.jpg.asset.json";
 import omgevingPad from "@/assets/omgeving/pad.png.asset.json";
 import omgevingLaan from "@/assets/omgeving/laan.png.asset.json";
+import dokTerras from "@/assets/dok/terras.jpg.asset.json";
+import dokEten from "@/assets/dok/eten.webp.asset.json";
+import dokSfeer from "@/assets/dok/sfeer.webp.asset.json";
 
 import {
   createBooking,
@@ -139,6 +142,7 @@ function Index() {
       <Kamers />
       <Gallery />
       <Omgeving />
+      <Lunch />
       <Tarief />
       <Aanvraag />
     </main>
