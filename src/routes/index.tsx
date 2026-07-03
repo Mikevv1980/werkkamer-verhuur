@@ -416,6 +416,68 @@ function Omgeving() {
   );
 }
 
+
+function Lunch() {
+  return (
+    <section id="lunch" className="py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+          <div className="grid grid-cols-6 gap-3 sm:gap-4">
+            <img
+              src={dokTerras.url}
+              alt="Terras van De Oude Keuken in Bakkum"
+              loading="lazy"
+              width={1200}
+              height={800}
+              className="col-span-6 h-64 w-full rounded-2xl object-cover sm:h-80"
+            />
+            <img
+              src={dokEten.url}
+              alt="Biologische lunch bij De Oude Keuken"
+              loading="lazy"
+              width={800}
+              height={600}
+              className="col-span-3 h-40 w-full rounded-2xl object-cover sm:h-48"
+            />
+            <img
+              src={dokSfeer.url}
+              alt="Sfeerbeeld interieur De Oude Keuken"
+              loading="lazy"
+              width={800}
+              height={600}
+              className="col-span-3 h-40 w-full rounded-2xl object-cover sm:h-48"
+            />
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
+              Lunch op het landgoed
+            </p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
+              Even samen lunchen bij De Oude Keuken.
+            </h2>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              Op loopafstand van de werkkamer ligt De Oude Keuken — een bijzondere plek op het landgoed
+              waar met liefde wordt gekookt met biologische en lokale producten. Ideaal om tijdens een
+              workshop of werkdag samen even te ontspannen aan tafel.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              We regelen op verzoek graag een lunch, borrel of diner bij je aanvraag.
+            </p>
+            <a
+              href="https://www.deoudekeuken.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              Bekijk De Oude Keuken
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Tarief() {
   return (
     <section id="tarief" className="py-20 sm:py-24">
