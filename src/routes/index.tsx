@@ -463,14 +463,24 @@ function Lunch() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               We regelen op verzoek graag een lunch, borrel of diner bij je aanvraag.
             </p>
-            <a
-              href="https://www.deoudekeuken.net/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Bekijk De Oude Keuken
-            </a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="https://www.deoudekeuken.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Bekijk De Oude Keuken
+              </a>
+              <a
+                href="https://www.deoudekeuken.net/wp-content/uploads/2026/02/DOK-lunchkaart-21x21-luikvouw-voorjaar-2026-FV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/10"
+              >
+                Bekijk de lunchkaart
+              </a>
+            </div>
           </div>
         </div>
       </div>
