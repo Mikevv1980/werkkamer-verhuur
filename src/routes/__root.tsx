@@ -77,20 +77,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Werkkamer Bakkum — Lichte werkkamer voor overleg en workshop" },
+      { title: "Twee werkkamers beschikbaar — midden in de natuur" },
       {
         name: "description",
         content:
           "Boek een lichte werkkamer in Bakkum voor overleg, brainstorm of workshop. Tot 4 personen, vanaf 20 euro per uur op landgoed Dijk en Duin.",
       },
       { name: "author", content: "Werkkamer Bakkum" },
-      { property: "og:title", content: "Werkkamer Bakkum — Lichte werkkamer voor overleg" },
+      { property: "og:title", content: "Twee werkkamers beschikbaar — midden in de natuur" },
       {
         property: "og:description",
         content: "Een rustige, inspirerende werkkamer op landgoed Dijk en Duin.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Twee werkkamers beschikbaar — midden in de natuur" },
+      { name: "description", content: "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Ideaal voor 1 op 1 overleg, brainstorm en workshop voor groepen van maximaal 5 personen." },
+      { property: "og:description", content: "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Ideaal voor 1 op 1 overleg, brainstorm en workshop voor groepen van maximaal 5 personen." },
+      { name: "twitter:description", content: "Boek een rustige werkkamer op landgoed Dijk en Duin in Bakkum. Ideaal voor 1 op 1 overleg, brainstorm en workshop voor groepen van maximaal 5 personen." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/74b4b4a9-f706-4a47-a0d6-13bbc2754c67/id-preview-39020587--224580a1-2dcf-4765-84a4-b33ec1eaa88d.lovable.app-1783106445692.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/74b4b4a9-f706-4a47-a0d6-13bbc2754c67/id-preview-39020587--224580a1-2dcf-4765-84a4-b33ec1eaa88d.lovable.app-1783106445692.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
