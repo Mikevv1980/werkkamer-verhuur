@@ -90,11 +90,11 @@ const stats = [
 const featurePoints = [
   {
     title: "Presenteren zonder gedoe",
-    body: "Groot tv-scherm met Apple-TV voor presentaties. Sluit je apparaat aan, klaar.",
+    body: "Groot tv-scherm met Apple-TV voor presentaties. Sluit je apparaat aan en klaar.",
   },
   {
     title: "Koffie, thee en kraanwater",
-    body: "Een kleine keuken met Nespresso-koffie, thee, kraanwater en een mooi servies.",
+    body: "Een kleine keuken met Nespresso-koffie, thee, kraanwater en andere gemakken.",
   },
   {
     title: "Rust in de duinen",
