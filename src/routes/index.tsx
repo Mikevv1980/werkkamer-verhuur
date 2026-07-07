@@ -830,21 +830,7 @@ function Aanvraag() {
               </div>
             </div>
 
-            <Field label="Datum">
-              <input
-                type="date"
-                min={fmtDate(today)}
-                value={selectedDate ?? ""}
-                onChange={(e) => {
-                  const v = e.target.value;
-                  setSelectedDate(v || null);
-                  setSelectedSlot(null);
-                }}
-                className={inputCls}
-              />
-            </Field>
-
-            <div className="mt-4 grid grid-cols-2 gap-3 [&>label]:mt-0">
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 [&>label]:mt-0">
               <Field label="Starttijd">
                 <select
                   value={form.start_time}
@@ -860,7 +846,7 @@ function Aanvraag() {
                       else setSelectedSlot("middag");
                     }
                   }}
-                  className={inputCls}
+                  className={selectCls}
                 >
                   <option value="">Kies tijd</option>
                   {TIME_OPTIONS.map((t) => (
@@ -885,7 +871,7 @@ function Aanvraag() {
                       else setSelectedSlot("middag");
                     }
                   }}
-                  className={inputCls}
+                  className={selectCls}
                 >
                   <option value="">Kies tijd</option>
                   {TIME_OPTIONS.map((t) => (
