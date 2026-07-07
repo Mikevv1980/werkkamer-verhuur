@@ -624,8 +624,8 @@ function Aanvraag() {
 
   return (
     <section id="aanvraag" className="py-20 sm:py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-        <div className="lg:pt-6">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-16">
+        <div className="lg:sticky lg:top-24 lg:pt-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
             Aanvraag
           </p>
@@ -830,20 +830,6 @@ function Aanvraag() {
               </div>
             </div>
 
-            <Field label="Datum">
-              <input
-                type="date"
-                min={fmtDate(today)}
-                value={selectedDate ?? ""}
-                onChange={(e) => {
-                  const v = e.target.value;
-                  setSelectedDate(v || null);
-                  setSelectedSlot(null);
-                }}
-                className={inputCls}
-              />
-            </Field>
-
             <div className="mt-4 grid grid-cols-2 gap-3 [&>label]:mt-0">
               <Field label="Starttijd">
                 <select
@@ -860,7 +846,8 @@ function Aanvraag() {
                       else setSelectedSlot("middag");
                     }
                   }}
-                  className={inputCls}
+                  className={selectCls}
+                  style={selectBgStyle}
                 >
                   <option value="">Kies tijd</option>
                   {TIME_OPTIONS.map((t) => (
@@ -885,7 +872,8 @@ function Aanvraag() {
                       else setSelectedSlot("middag");
                     }
                   }}
-                  className={inputCls}
+                  className={selectCls}
+                  style={selectBgStyle}
                 >
                   <option value="">Kies tijd</option>
                   {TIME_OPTIONS.map((t) => (
@@ -903,7 +891,8 @@ function Aanvraag() {
               <select
                 value={form.num_people}
                 onChange={(e) => setForm({ ...form, num_people: e.target.value })}
-                className={inputCls}
+                className={selectCls}
+                style={selectBgStyle}
               >
                 {[1, 2, 3, 4, 5].map((n) => (
                   <option key={n} value={n}>
@@ -920,7 +909,7 @@ function Aanvraag() {
                 value={form.room_purpose}
                 onChange={(e) => setForm({ ...form, room_purpose: e.target.value })}
                 placeholder="Naam en adres waarop de factuur mag worden gezet"
-                className={inputCls}
+                className={textareaCls}
               />
             </Field>
 
@@ -931,7 +920,7 @@ function Aanvraag() {
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
                 placeholder="Bijvoorbeeld lunch of een goede maaltijd, technische wensen of gewenste opstelling."
-                className={inputCls}
+                className={textareaCls}
               />
             </Field>
 
@@ -964,7 +953,23 @@ function Aanvraag() {
 }
 
 const inputCls =
-  "mt-1.5 block w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-0";
+  "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25";
+
+const selectCls =
+  `${
+    "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 pr-9 text-sm text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25 bg-no-repeat"
+  }`;
+
+const selectBgStyle = {
+  backgroundImage:
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23736b5f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 8 10 12 14 8'/></svg>\")",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 0.75rem center",
+  backgroundSize: "1rem 1rem",
+} as const;
+
+const textareaCls =
+  "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25 resize-y";
 
 const TIME_OPTIONS: string[] = (() => {
   const list: string[] = [];
