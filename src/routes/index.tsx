@@ -624,8 +624,8 @@ function Aanvraag() {
 
   return (
     <section id="aanvraag" className="py-20 sm:py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-        <div className="lg:pt-6">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1fr_1.15fr] lg:items-start lg:gap-16">
+        <div className="lg:sticky lg:top-24 lg:pt-6">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-terracotta">
             Aanvraag
           </p>
