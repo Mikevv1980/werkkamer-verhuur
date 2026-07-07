@@ -133,21 +133,26 @@ function RootShell({ children }: { children: ReactNode }) {
 function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" className="sr-only">Werkkamer Bakkum</Link>
-        <div className="flex flex-1 items-center justify-end gap-8">
-          <a href="/#tarief" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+        <Link
+          to="/"
+          className="font-serif text-base text-foreground transition-colors hover:text-primary sm:text-lg"
+        >
+          Werkkamer Bakkum
+        </Link>
+        <div className="flex items-center gap-5 sm:gap-8">
+          <a href="/#tarief" className="hidden text-sm text-foreground/80 transition-colors hover:text-foreground sm:inline">
             Tarief
           </a>
-          <a href="/#kamers" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+          <a href="/#kamers" className="hidden text-sm text-foreground/80 transition-colors hover:text-foreground sm:inline">
             Kamers
           </a>
-          <a href="/#omgeving" className="text-sm text-foreground/80 transition-colors hover:text-foreground">
+          <a href="/#omgeving" className="hidden text-sm text-foreground/80 transition-colors hover:text-foreground sm:inline">
             Omgeving
           </a>
           <a
             href="/#aanvraag"
-            className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Aanvragen
           </a>
