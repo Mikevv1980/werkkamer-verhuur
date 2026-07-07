@@ -847,6 +847,7 @@ function Aanvraag() {
                     }
                   }}
                   className={selectCls}
+                  style={selectBgStyle}
                 >
                   <option value="">Kies tijd</option>
                   {TIME_OPTIONS.map((t) => (
