@@ -889,7 +889,7 @@ function Aanvraag() {
               <select
                 value={form.num_people}
                 onChange={(e) => setForm({ ...form, num_people: e.target.value })}
-                className={inputCls}
+                className={selectCls}
               >
                 {[1, 2, 3, 4, 5].map((n) => (
                   <option key={n} value={n}>
@@ -906,7 +906,7 @@ function Aanvraag() {
                 value={form.room_purpose}
                 onChange={(e) => setForm({ ...form, room_purpose: e.target.value })}
                 placeholder="Naam en adres waarop de factuur mag worden gezet"
-                className={inputCls}
+                className={textareaCls}
               />
             </Field>
 
@@ -917,7 +917,7 @@ function Aanvraag() {
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}
                 placeholder="Bijvoorbeeld lunch of een goede maaltijd, technische wensen of gewenste opstelling."
-                className={inputCls}
+                className={textareaCls}
               />
             </Field>
 
