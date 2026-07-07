@@ -382,23 +382,23 @@ function Omgeving() {
               Gesprek, lunch of diner bij je aanvraag.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 sm:[grid-template-rows:1fr]">
+          <div className="grid gap-4 sm:grid-cols-2">
             <img
               src={omgevingGebouw.url}
               alt="Historisch hoofdgebouw met klokkentoren op landgoed Dijk en Duin"
               loading="lazy"
               width={800}
               height={900}
-              className="h-72 w-full rounded-2xl object-cover sm:h-full sm:min-h-[440px]"
+              className="h-72 w-full rounded-2xl object-cover sm:h-[456px]"
             />
-            <div className="grid gap-4 sm:grid-rows-2">
+            <div className="grid gap-4 sm:h-[456px] sm:grid-rows-2">
               <img
                 src={omgevingPad.url}
                 alt="Wandelpad langs een karakteristiek huisje op het landgoed"
                 loading="lazy"
                 width={800}
                 height={500}
-                className="h-52 w-full rounded-2xl object-cover sm:h-full"
+                className="h-52 w-full rounded-2xl object-cover sm:h-full sm:min-h-0"
               />
               <img
                 src={omgevingLaan.url}
@@ -406,10 +406,11 @@ function Omgeving() {
                 loading="lazy"
                 width={800}
                 height={500}
-                className="h-52 w-full rounded-2xl object-cover sm:h-full"
+                className="h-52 w-full rounded-2xl object-cover sm:h-full sm:min-h-0"
               />
             </div>
           </div>
+
         </div>
       </div>
     </section>
