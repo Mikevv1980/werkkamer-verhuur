@@ -950,7 +950,23 @@ function Aanvraag() {
 }
 
 const inputCls =
-  "mt-1.5 block w-full border-0 border-b border-border bg-transparent px-0 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-0";
+  "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25";
+
+const selectCls =
+  `${
+    "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 pr-9 text-sm text-foreground shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25 bg-no-repeat"
+  }`;
+
+const selectBgStyle = {
+  backgroundImage:
+    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23736b5f' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 8 10 12 14 8'/></svg>\")",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 0.75rem center",
+  backgroundSize: "1rem 1rem",
+} as const;
+
+const textareaCls =
+  "mt-1.5 block w-full appearance-none rounded-lg border border-input bg-background/70 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 shadow-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25 resize-y";
 
 const TIME_OPTIONS: string[] = (() => {
   const list: string[] = [];
