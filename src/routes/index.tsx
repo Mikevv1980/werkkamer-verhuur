@@ -830,7 +830,7 @@ function Aanvraag() {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 [&>label]:mt-0">
+            <div className="mt-4 grid grid-cols-2 gap-3 [&>label]:mt-0">
               <Field label="Starttijd">
                 <select
                   value={form.start_time}
