@@ -68,7 +68,7 @@ export async function enqueueOwnerEmail({
     .select("token, used_at")
     .eq("email", normalized)
     .maybeSingle();
-  let unsubscribeToken: string | undefined = existingToken?.token;
+  let unsubscribeToken: string | undefined = existingToken?.token ?? undefined;
   if (!existingToken) {
     const bytes = new Uint8Array(32);
     crypto.getRandomValues(bytes);
@@ -83,7 +83,7 @@ export async function enqueueOwnerEmail({
       .select("token")
       .eq("email", normalized)
       .maybeSingle();
-    unsubscribeToken = stored?.token;
+    unsubscribeToken = stored?.token ?? undefined;
   }
   if (!unsubscribeToken) throw new Error("Missing unsubscribe token");
 
