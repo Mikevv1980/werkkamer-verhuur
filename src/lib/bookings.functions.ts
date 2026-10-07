@@ -162,17 +162,63 @@ export const createBooking = createServerFn({ method: "POST" })
           : template.subject;
       const messageId = crypto.randomUUID();
       const recipient = template.to!;
+      const normalized = recipient.toLowerCase();
       const admin = supabaseAdmin as unknown as {
-        from: (t: string) => { insert: (v: unknown) => Promise<unknown> };
-        rpc: (fn: string, args: unknown) => Promise<unknown>;
+        from: (t: string) => any;
+        rpc: (fn: string, args: unknown) => Promise<{ error: unknown }>;
       };
+
+      // Skip if the address is suppressed
+      const { data: suppressed } = await admin
+        .from("suppressed_emails")
+        .select("id")
+        .eq("email", normalized)
+        .maybeSingle();
+      if (suppressed) {
+        await admin.from("email_send_log").insert({
+          message_id: messageId,
+          template_name: "booking-notification",
+          recipient_email: recipient,
+          status: "suppressed",
+        });
+        return { id: inserted.id };
+      }
+
+      // Get or create unsubscribe token (required by the email API)
+      const { data: existingToken } = await admin
+        .from("email_unsubscribe_tokens")
+        .select("token, used_at")
+        .eq("email", normalized)
+        .maybeSingle();
+      let unsubscribeToken: string | undefined = existingToken?.token;
+      if (!existingToken) {
+        const bytes = new Uint8Array(32);
+        crypto.getRandomValues(bytes);
+        const newToken = Array.from(bytes)
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join("");
+        await admin
+          .from("email_unsubscribe_tokens")
+          .upsert(
+            { token: newToken, email: normalized },
+            { onConflict: "email", ignoreDuplicates: true },
+          );
+        const { data: stored } = await admin
+          .from("email_unsubscribe_tokens")
+          .select("token")
+          .eq("email", normalized)
+          .maybeSingle();
+        unsubscribeToken = stored?.token;
+      }
+      if (!unsubscribeToken) throw new Error("Missing unsubscribe token");
+
       await admin.from("email_send_log").insert({
         message_id: messageId,
         template_name: "booking-notification",
         recipient_email: recipient,
         status: "pending",
       });
-      await admin.rpc("enqueue_email", {
+      const { error: enqueueError } = await admin.rpc("enqueue_email", {
         queue_name: "transactional_emails",
         payload: {
           message_id: messageId,
@@ -185,9 +231,11 @@ export const createBooking = createServerFn({ method: "POST" })
           purpose: "transactional",
           label: "booking-notification",
           idempotency_key: `booking-${inserted.id}`,
+          unsubscribe_token: unsubscribeToken,
           queued_at: new Date().toISOString(),
         },
       });
+      if (enqueueError) throw enqueueError;
     } catch (mailErr) {
       console.error("Failed to enqueue booking notification email", mailErr);
     }
