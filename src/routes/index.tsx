@@ -41,6 +41,7 @@ import {
   type TimeSlot,
   type Room,
 } from "@/lib/bookings.functions";
+import { sendInquiry, INQUIRY_SUBJECTS } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -145,6 +146,7 @@ function Index() {
       <Lunch />
       <Tarief />
       <Aanvraag />
+      <NogNietKlaar />
     </main>
   );
 }
@@ -948,6 +950,190 @@ function Aanvraag() {
             </button>
           </form>
         )}
+      </div>
+    </section>
+  );
+}
+
+/* ------- NOG NIET KLAAR OM TE BOEKEN ------- */
+
+type InquirySubject = (typeof INQUIRY_SUBJECTS)[number]["value"];
+
+function NogNietKlaar() {
+  const [mode, setMode] = useState<"kijken" | "vaste_huur" | null>(null);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "bezichtiging" as InquirySubject,
+    message: "",
+    company: "",
+  });
+
+  const submitInquiry = useServerFn(sendInquiry);
+  const mutation = useMutation({
+    mutationFn: () =>
+      submitInquiry({
+        data: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: form.subject,
+          message: form.message,
+          company: form.company,
+        },
+      }),
+  });
+
+  const open = (next: "kijken" | "vaste_huur") => {
+    setMode(next);
+    setForm((f) => ({ ...f, subject: next === "vaste_huur" ? "vaste_huur" : "bezichtiging" }));
+  };
+
+  const secondaryBtn =
+    "inline-flex items-center justify-center rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent";
+
+  return (
+    <section className="bg-accent/40 py-16 sm:py-20">
+      <div className="mx-auto max-w-3xl px-6">
+        <h2 className="font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+          Nog niet klaar om te boeken?
+        </h2>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+          Kom gerust eerst even kijken of neem contact op als je meer wilt weten over de werkkamer
+          en de mogelijkheden voor vaste huur.
+        </p>
+
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <a
+            href="/#aanvraag"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/90"
+          >
+            Boek de werkkamer
+          </a>
+          <button type="button" onClick={() => open("kijken")} className={secondaryBtn}>
+            Kom even kijken
+          </button>
+          <button type="button" onClick={() => open("vaste_huur")} className={secondaryBtn}>
+            Vraag naar vaste huur
+          </button>
+        </div>
+
+        {mode ? (
+          mutation.isSuccess ? (
+            <div className="mt-7 rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8">
+              <CheckCircle2 className="mx-auto h-12 w-12 text-primary" />
+              <h3 className="mt-4 font-serif text-xl text-card-foreground">
+                Bedankt, je aanvraag is verstuurd
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Je hoort zo snel mogelijk bericht van me.
+              </p>
+            </div>
+          ) : (
+            <form
+              noValidate
+              onSubmit={(e) => {
+                e.preventDefault();
+                mutation.mutate();
+              }}
+              className="mt-7 rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
+            >
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <Field label="Naam">
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Jouw naam"
+                      className={inputCls}
+                    />
+                  </Field>
+                </div>
+                <div>
+                  <Field label="E-mail">
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="jouw@email.nl"
+                      className={inputCls}
+                    />
+                  </Field>
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <Field label="Telefoon (optioneel)">
+                    <input
+                      type="tel"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+31 6 ..."
+                      className={inputCls}
+                    />
+                  </Field>
+                </div>
+                <div>
+                  <Field label="Onderwerp">
+                    <select
+                      value={form.subject}
+                      onChange={(e) =>
+                        setForm({ ...form, subject: e.target.value as InquirySubject })
+                      }
+                      className={selectCls}
+                      style={selectBgStyle}
+                    >
+                      {INQUIRY_SUBJECTS.map((s) => (
+                        <option key={s.value} value={s.value}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                  </Field>
+                </div>
+              </div>
+              <Field label="Bericht">
+                <textarea
+                  rows={4}
+                  maxLength={1000}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="Waar wil je meer over weten, of wanneer zou je langs willen komen?"
+                  className={textareaCls}
+                />
+              </Field>
+
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={form.company}
+                onChange={(e) => setForm({ ...form, company: e.target.value })}
+                className="hidden"
+              />
+
+              {mutation.isError && (
+                <p className="mt-3 text-sm text-destructive">
+                  {(mutation.error as Error).message}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={!form.name || !form.email || mutation.isPending}
+                className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+              >
+                {mutation.isPending && <Loader2 className="h-4 w-4 animate-spin" />}
+                Verstuur aanvraag
+              </button>
+            </form>
+          )
+        ) : null}
       </div>
     </section>
   );
