@@ -79,7 +79,7 @@ const BookingNotification = ({
           <Row k="Starttijd" v={startTime} />
           <Row k="Eindtijd" v={endTime} />
           <Row k="Aantal personen" v={numPeople} />
-          <Row k="Soort werkruimte" v={roomPurpose} />
+          <Row k="Factuuradres" v={roomPurpose} />
         </Section>
         {notes ? (
           <>
