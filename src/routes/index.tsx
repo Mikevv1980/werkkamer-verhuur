@@ -618,12 +618,6 @@ function Aanvraag() {
   const selectedUnavailable = selectedDate ? (roomUnavailable[selectedDate] ?? []) : [];
 
   const currentRoom = ROOMS.find((r) => r.value === selectedRoom)!;
-  const indicatie =
-    selectedSlot === "hele_dag"
-      ? `€${currentRoom.daily}`
-      : selectedSlot
-        ? `€${currentRoom.hourly * 4} per dagdeel`
-        : "—";
 
   return (
     <section id="aanvraag" className="py-20 sm:py-24">
@@ -927,8 +921,7 @@ function Aanvraag() {
               />
             </Field>
 
-            <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground">
-              <span>Indicatie: {indicatie}</span>
+            <div className="mt-6 text-xs text-muted-foreground">
               {!selectedDate || !selectedSlot ? (
                 <span>Vul datum en tijden in</span>
               ) : (
