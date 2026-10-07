@@ -41,6 +41,7 @@ import {
   type TimeSlot,
   type Room,
 } from "@/lib/bookings.functions";
+import { sendInquiry, INQUIRY_SUBJECTS } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -145,6 +146,7 @@ function Index() {
       <Lunch />
       <Tarief />
       <Aanvraag />
+      <NogNietKlaar />
     </main>
   );
 }
