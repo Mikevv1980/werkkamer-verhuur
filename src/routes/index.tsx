@@ -145,8 +145,8 @@ function Index() {
       <Omgeving />
       <Lunch />
       <Tarief />
-      <Aanvraag />
       <NogNietKlaar />
+      <Aanvraag />
     </main>
   );
 }
