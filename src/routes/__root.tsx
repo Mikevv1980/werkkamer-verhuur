@@ -131,9 +131,19 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function AnnouncementBar() {
+  return (
+    <div className="border-b border-border/50 bg-secondary">
+      <div className="mx-auto max-w-6xl px-6 py-1.5 text-center text-xs leading-normal text-secondary-foreground sm:text-sm">
+        <span className="font-semibold">Nieuw:</span> huur de werkkamer ook één of meerdere vaste dagen per week.
+      </div>
+    </div>
+  );
+}
+
 function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-border/40 bg-background/85 backdrop-blur-md">
+    <nav className="border-b border-border/40 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
         <Link
           to="/"
