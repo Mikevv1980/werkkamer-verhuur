@@ -130,7 +130,7 @@ const kamers = [
 
 const gallery = [
   { src: sfeerOverview.url, alt: "Warme werkkamer met ovalen tafel en daglicht", caption: "Veel daglicht en een warme, rustige sfeer.", room: "Kamer 1" },
-  { src: sfeerKitchen.url, alt: "Kitchenette met planten en koffie", caption: "Eigen koffiehoek met verse koffie en thee.", room: "Kamer 1" },
+  { src: sfeerKitchen.url, alt: "Kitchenette met planten en koffie", caption: "Eigen koffiehoek met koffie en thee.", room: "Kamer 1" },
   { src: sfeerNotes.url, alt: "Aantekeningen maken in een notitieboek", caption: "Ruimte om te denken, schrijven en reflecteren.", room: "Kamer 1" },
 ];
 
